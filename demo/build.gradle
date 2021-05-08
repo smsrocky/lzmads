@@ -1,0 +1,76 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        applicationId "com.ifmvo.togetherad.demo"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "5.0.3"
+        multiDexEnabled true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'TogetherAd2020'
+            keyPassword 'TogetherAd2020'
+            storeFile file('TogetherAd.jks')
+            storePassword 'TogetherAd2020'
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 自定义APK文件名
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "TogetherAdDemo_${releaseTime()}.apk"
+        }
+    }
+}
+
+//获取时间
+static def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+    //内存泄漏检测工具
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
+
+//    implementation 'com.github.ifmvo.TogetherAd:core:5.0.3'
+//    implementation 'com.github.ifmvo.TogetherAd:gdt:5.0.3'
+//    implementation 'com.github.ifmvo.TogetherAd:csj:5.0.3'
+//    implementation 'com.github.ifmvo.TogetherAd:baidu:5.0.3'
+
+    //TogetherAd
+    implementation project(':csj')
+    implementation project(':gdt')
+    implementation project(':baidu')
+
+}
