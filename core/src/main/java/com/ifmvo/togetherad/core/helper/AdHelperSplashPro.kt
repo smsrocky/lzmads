@@ -18,7 +18,6 @@ import java.lang.ref.WeakReference
  * Created by Matthew Chen on 2020-04-03.
  */
 class AdHelperSplashPro(
-
         @NotNull activity: Activity,
         @NotNull alias: String,
         ratioMap: LinkedHashMap<String, Int>? = null
@@ -45,7 +44,6 @@ class AdHelperSplashPro(
     }
 
     private fun realLoadOnly(@NotNull ratioMap: LinkedHashMap<String, Int>, listener: SplashListener? = null) {
-
         val adProviderType = DispatchUtil.getAdProvider(mAlias, ratioMap)
 
         if (adProviderType?.isEmpty() != false || mActivity.get() == null) {

@@ -25,10 +25,8 @@ abstract class CsjProviderSplash : CsjProviderReward() {
 
     private var mSplashAd: TTSplashAd? = null
     override fun loadOnlySplashAd(activity: Activity, adProviderType: String, alias: String, listener: SplashListener) {
-
         mListener = listener
         mAdProviderType = adProviderType
-
         callbackSplashStartRequest(adProviderType, alias, listener)
 
         val adSlotBuilder = AdSlot.Builder()

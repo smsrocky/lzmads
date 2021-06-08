@@ -27,7 +27,7 @@ open class GdtProvider : GdtProviderSplash() {
          */
         var maxFetchDelay = 4000
 
-        //自定义按钮
+        //广点通自定义跳过按钮
         var customSkipView: BaseSplashSkipView? = null
 
     }

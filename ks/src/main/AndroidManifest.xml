@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="cn.lzm.ads.ks"
+    tools:ignore="LockedOrientationActivity">
+
+    <!--检测当前网络状态是2G、3G、4G还是WiFi-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--联网权限-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--获取设备标识IMEI。用于标识用户-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--获取MAC地址，用于标识用户-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--安装应用权限-->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!--定位权限，不强制要求-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--读写存储权限 非必须-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!--SDK内自定义的权限，与下载相关，aar中已经申请-->
+    <permission
+        android:name="${applicationId}.permission.KW_SDK_BROADCAST"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="${applicationId}.permission.KW_SDK_BROADCAST" />
+</manifest>

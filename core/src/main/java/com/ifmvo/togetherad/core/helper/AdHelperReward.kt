@@ -14,7 +14,6 @@ import java.lang.ref.WeakReference
 /**
  * 激励广告
  *
- * Created by Matthew Chen on 2020-04-20.
  */
 class AdHelperReward(
 

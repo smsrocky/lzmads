@@ -9,9 +9,9 @@ import com.qq.e.comm.managers.GDTADManager
 import org.jetbrains.annotations.NotNull
 
 /**
- * 初始化广点通
+ * 第三方广告平台
+ * 广点通初始化
  *
- * Created by Matthew Chen on 2020-04-04.
  */
 object TogetherAdGdt {
 

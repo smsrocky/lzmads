@@ -5,8 +5,9 @@ import android.view.ViewGroup
 import com.ifmvo.togetherad.core.listener.*
 import org.jetbrains.annotations.NotNull
 
-/* 
- * Created by Matthew Chen on 2020-04-03.
+/**
+ * 广告请求|展示接口
+ *
  */
 interface IAdProvider {
 
@@ -109,7 +110,6 @@ interface IAdProvider {
     /**
      * -----------------------------------获取原生模板2.0列表-----------------------------------
      */
-
     fun getNativeExpress2AdList(
             @NotNull activity: Activity,
             @NotNull adProviderType: String,

@@ -9,8 +9,11 @@ import com.ifmvo.togetherad.core.utils.logi
 import org.jetbrains.annotations.NotNull
 import org.jetbrains.annotations.Nullable
 
-/*
- * Created by Matthew Chen on 2020-04-03.
+/**
+ * 抽象类
+ * 增加各类型广告回调
+ * （并未实现各类广告请求与展示）
+ *
  */
 abstract class BaseAdProvider : IAdProvider {
 
