@@ -3,10 +3,6 @@ package cn.lzm.ads.ks.povider
 import android.app.Activity
 import android.view.ViewGroup
 import com.ifmvo.togetherad.core.listener.*
-import com.ifmvo.togetherad.core.provider.BaseAdProvider
-import com.kwad.sdk.api.KsAdSDK
-import com.kwad.sdk.api.KsLoadManager
-import com.kwad.sdk.api.SdkConfig
 
 open class KsProvider :KsProviderSplash() {
 
@@ -30,11 +26,9 @@ open class KsProvider :KsProviderSplash() {
         container: ViewGroup,
         listener: BannerListener
     ) {
-        TODO("Not yet implemented")
     }
 
     override fun destroyBannerAd() {
-        TODO("Not yet implemented")
     }
 
     override fun requestInterAd(
@@ -43,15 +37,12 @@ open class KsProvider :KsProviderSplash() {
         alias: String,
         listener: InterListener
     ) {
-        TODO("Not yet implemented")
     }
 
     override fun showInterAd(activity: Activity) {
-        TODO("Not yet implemented")
     }
 
     override fun destroyInterAd() {
-        TODO("Not yet implemented")
     }
 
     override fun getNativeAdList(
@@ -61,23 +52,19 @@ open class KsProvider :KsProviderSplash() {
         maxCount: Int,
         listener: NativeListener
     ) {
-        TODO("Not yet implemented")
     }
 
     override fun nativeAdIsBelongTheProvider(adObject: Any): Boolean {
-        TODO("Not yet implemented")
+        return false
     }
 
     override fun resumeNativeAd(adObject: Any) {
-        TODO("Not yet implemented")
     }
 
     override fun pauseNativeAd(adObject: Any) {
-        TODO("Not yet implemented")
     }
 
     override fun destroyNativeAd(adObject: Any) {
-        TODO("Not yet implemented")
     }
 
     override fun getNativeExpressAdList(
@@ -87,15 +74,13 @@ open class KsProvider :KsProviderSplash() {
         adCount: Int,
         listener: NativeExpressListener
     ) {
-        TODO("Not yet implemented")
     }
 
     override fun destroyNativeExpressAd(adObject: Any) {
-        TODO("Not yet implemented")
     }
 
     override fun nativeExpressAdIsBelongTheProvider(adObject: Any): Boolean {
-        TODO("Not yet implemented")
+        return false
     }
 
     override fun getNativeExpress2AdList(
@@ -105,15 +90,13 @@ open class KsProvider :KsProviderSplash() {
         adCount: Int,
         listener: NativeExpress2Listener
     ) {
-        TODO("Not yet implemented")
     }
 
     override fun destroyNativeExpress2Ad(adObject: Any) {
-        TODO("Not yet implemented")
     }
 
     override fun nativeExpress2AdIsBelongTheProvider(adObject: Any): Boolean {
-        TODO("Not yet implemented")
+        return false
     }
 
     override fun requestRewardAd(
@@ -122,11 +105,10 @@ open class KsProvider :KsProviderSplash() {
         alias: String,
         listener: RewardListener
     ) {
-        TODO("Not yet implemented")
     }
 
     override fun showRewardAd(activity: Activity): Boolean {
-        TODO("Not yet implemented")
+        return false
     }
 
 }

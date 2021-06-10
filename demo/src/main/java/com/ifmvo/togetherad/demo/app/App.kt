@@ -75,7 +75,7 @@ class App : ActLifecycleAppBase() {
         TogetherAdBaidu.init(
             context = this,
             adProviderType = AdProviderType.BAIDU.type,
-            baiduAdAppId = "e866cfb0"
+            baiduAdAppId = "ee93e58e"
         )
 
         TogetherAdKs.init(
@@ -125,8 +125,8 @@ class App : ActLifecycleAppBase() {
         )
 
         TogetherAdBaidu.idMapBaidu = mutableMapOf(
-            TogetherAdAlias.AD_SPLASH to "2058622",
-            TogetherAdAlias.AD_SPLASH_HOT to "2058622",
+            TogetherAdAlias.AD_SPLASH to "2543740",
+            TogetherAdAlias.AD_SPLASH_HOT to "2543740",
             TogetherAdAlias.AD_NATIVE_EXPRESS_2_SIMPLE to "",//不支持
             TogetherAdAlias.AD_NATIVE_EXPRESS_2_RECYCLERVIEW to "",//不支持
             TogetherAdAlias.AD_NATIVE_EXPRESS_SIMPLE to "",//不支持

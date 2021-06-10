@@ -72,8 +72,8 @@ class SplashHotActivity : AppCompatActivity() {
 
         //使用 Map<String, Int> 配置广告商 权重，通俗的讲就是 随机请求的概率占比
         val ratioMapSplash = linkedMapOf(
-                AdProviderType.GDT.type to 1,
-                AdProviderType.CSJ.type to 1,
+                AdProviderType.GDT.type to 0,
+                AdProviderType.CSJ.type to 0,
                 AdProviderType.BAIDU.type to 1
         )
 
@@ -84,7 +84,7 @@ class SplashHotActivity : AppCompatActivity() {
          * container: 必传。请求到广告之后会自动添加到 container 这个布局中展示。
          * listener: 非必传。如果你不需要监听结果可以不传或传空。各个回调方法也可以选择性添加
          */
-        AdHelperSplash.show(activity = this, alias = TogetherAdAlias.AD_SPLASH_HOT, /*ratioMap = ratioMapSplash,*/ container = adContainer, listener = object : SplashListener {
+        AdHelperSplash.show(activity = this, alias = TogetherAdAlias.AD_SPLASH_HOT, ratioMap = ratioMapSplash, container = adContainer, listener = object : SplashListener {
 
             override fun onAdStartRequest(providerType: String) {
                 //在开始请求之前会回调此方法，失败切换的情况会回调多次
