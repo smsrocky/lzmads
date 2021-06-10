@@ -15,7 +15,7 @@ import com.kwad.sdk.api.KsSplashScreenAd
  * 快看开屏广告实现类
  *
  */
-abstract class KsProviderSplash : KsProviderFullVideo() {
+abstract class KsProviderSplash : KsProviderReward() {
     private var mListener: SplashListener? = null
     private var mAdProviderType: String? = null
     private var mAlias:String? = null

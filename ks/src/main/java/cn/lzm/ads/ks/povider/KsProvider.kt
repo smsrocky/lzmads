@@ -98,17 +98,4 @@ open class KsProvider :KsProviderSplash() {
     override fun nativeExpress2AdIsBelongTheProvider(adObject: Any): Boolean {
         return false
     }
-
-    override fun requestRewardAd(
-        activity: Activity,
-        adProviderType: String,
-        alias: String,
-        listener: RewardListener
-    ) {
-    }
-
-    override fun showRewardAd(activity: Activity): Boolean {
-        return false
-    }
-
 }
