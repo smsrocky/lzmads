@@ -49,7 +49,7 @@ open class BaiduProvider : BaseAdProvider() {
         SplashAd(activity, container, object : SplashAdListener {
             override fun onAdPresent() {
                 "onADLoaded".logd(tag)
-                callbackSplashLoaded(adProviderType, alias, listener)
+                callbackSplashExposure(adProviderType, listener)
             }
 
             override fun onAdDismissed() {
@@ -59,6 +59,7 @@ open class BaiduProvider : BaseAdProvider() {
             }
 
             override fun onADLoaded() {
+                callbackSplashLoaded(adProviderType, alias, listener)
                 "onADLoaded".logd(tag)
             }
 
