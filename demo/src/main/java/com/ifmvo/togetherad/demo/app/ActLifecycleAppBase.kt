@@ -23,7 +23,47 @@ open class ActLifecycleAppBase : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
+        registerActivityLifecycleCallbacks(object :ActivityLifecycleCallbacks{
+            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+            }
+
+            override fun onActivityStarted(activity: Activity) {
+                activity ?: return
+                //热启动 && 应用退到后台时间超过10s
+                if (mActivityCount.get() == 0 && System.currentTimeMillis() - mAppStopTimeMillis > 10 * 1000 && activity !is SplashActivity) {
+                    SplashHotActivity.action(activity)
+                }
+
+                //+1
+                mActivityCount.getAndAdd(1)
+            }
+
+            override fun onActivityResumed(activity: Activity) {
+            }
+
+            override fun onActivityPaused(activity: Activity) {
+            }
+
+            override fun onActivityStopped(activity: Activity) {
+                activity ?: return
+
+                //-1
+                mActivityCount.getAndDecrement()
+
+                //退到后台，记录时间
+                if (mActivityCount.get() == 0) {
+                    mAppStopTimeMillis = System.currentTimeMillis()
+                }
+            }
+
+            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
+            }
+
+            override fun onActivityDestroyed(activity: Activity) {
+            }
+
+        })
+        /*registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
 
             override fun onActivityStarted(activity: Activity?) {
 
@@ -56,6 +96,6 @@ open class ActLifecycleAppBase : Application() {
             override fun onActivityDestroyed(activity: Activity?) {}
             override fun onActivitySaveInstanceState(activity: Activity?, outState: Bundle?) {}
             override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {}
-        })
+        })*/
     }
 }
