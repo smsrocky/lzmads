@@ -38,6 +38,12 @@ abstract class GdtProviderInter : GdtProviderFullVideo() {
                 callbackInterClosed(adProviderType, listener)
             }
 
+            override fun onRenderSuccess() {
+            }
+
+            override fun onRenderFail() {
+            }
+
             override fun onADLeftApplication() {
                 "onADLeftApplication".logi(tag)
             }

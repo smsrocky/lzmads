@@ -23,23 +23,7 @@ abstract class GdtProviderFullVideo : GdtProviderBanner() {
 
         callbackFullVideoStartRequest(adProviderType, alias, listener)
 
-        fullVideoAd = UnifiedInterstitialAD(activity, TogetherAdGdt.idMapGDT[alias], object : UnifiedInterstitialADListener {
-            override fun onADExposure() {
-                callbackFullVideoShow(adProviderType, listener)
-            }
-
-            override fun onVideoCached() {
-                callbackFullVideoCached(adProviderType, listener)
-            }
-
-            override fun onADOpened() {}
-
-            override fun onADClosed() {
-                callbackFullVideoClosed(adProviderType, listener)
-            }
-
-            override fun onADLeftApplication() {}
-
+        fullVideoAd = UnifiedInterstitialAD(activity,TogetherAdGdt.idMapGDT[alias],object :UnifiedInterstitialADListener{
             override fun onADReceive() {
                 TogetherAdGdt.downloadConfirmListener?.let {
                     fullVideoAd?.setDownloadConfirmListener(it)
@@ -47,14 +31,40 @@ abstract class GdtProviderFullVideo : GdtProviderBanner() {
                 callbackFullVideoLoaded(adProviderType, alias, listener)
             }
 
+            override fun onVideoCached() {
+                callbackFullVideoCached(adProviderType, listener)
+            }
+
             override fun onNoAD(adError: AdError?) {
                 callbackFullVideoFailed(adProviderType, alias, listener, adError?.errorCode, adError?.errorMsg)
+            }
+
+            override fun onADOpened() {
+            }
+
+            override fun onADExposure() {
+                callbackFullVideoShow(adProviderType, listener)
             }
 
             override fun onADClicked() {
                 callbackFullVideoClicked(adProviderType, listener)
             }
+
+            override fun onADLeftApplication() {
+            }
+
+            override fun onADClosed() {
+                callbackFullVideoClosed(adProviderType, listener)
+            }
+
+            override fun onRenderSuccess() {
+            }
+
+            override fun onRenderFail() {
+            }
+
         })
+
         val option = VideoOption.Builder()
                 .setAutoPlayMuted(GdtProvider.FullVideo.autoPlayMuted)
                 .setAutoPlayPolicy(GdtProvider.FullVideo.autoPlayPolicy)
