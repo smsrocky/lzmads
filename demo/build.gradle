@@ -72,6 +72,6 @@ dependencies {
     implementation project(':csj')
     implementation project(':gdt')
     implementation project(':baidu')
-
     implementation project(':ks')
+    implementation project(":mintegral")
 }

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import cn.lzm.ads.mintegral.provider.MintegralProvider
 import com.ifmvo.togetherad.core.custom.splashSkip.SplashSkipViewSimple2
 import com.ifmvo.togetherad.core.helper.AdHelperSplash
 import com.ifmvo.togetherad.core.listener.SplashListener
@@ -81,9 +82,11 @@ class SplashActivity : AppCompatActivity() {
 
         //使用 Map<String, Int> 配置广告商 权重，通俗的讲就是 随机请求的概率占比
         val ratioMapSplash = linkedMapOf(
-                AdProviderType.GDT.type to 0,
-                AdProviderType.CSJ.type to 0,
-                AdProviderType.BAIDU.type to 1
+            AdProviderType.GDT.type to 0,
+            AdProviderType.CSJ.type to 0,
+            AdProviderType.BAIDU.type to 0,
+            AdProviderType.KS.type to 1,
+            AdProviderType.Mintegral.type to 1
         )
 
         /**
@@ -148,6 +151,10 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        if (MintegralProvider.Splash.mbSplashHandler != null) {
+            addLog("Mintegral onResume")
+            MintegralProvider.Splash.mbSplashHandler?.onResume()
+        }
         if (canJump) {
             actionHome()
         }
@@ -157,10 +164,21 @@ class SplashActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         canJump = false
+        if (MintegralProvider.Splash.mbSplashHandler != null) {
+            addLog("Mintegral onPause")
+            MintegralProvider.Splash.mbSplashHandler?.onPause()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (MintegralProvider.Splash.mbSplashHandler != null) {
+            addLog("Mintegral onDestroy")
+            MintegralProvider.Splash.mbSplashHandler?.onDestroy()
+        }
     }
 
     private fun actionHome(delayMillis: Long = 0) {
-
         if (!canJump) {
             canJump = true
             return

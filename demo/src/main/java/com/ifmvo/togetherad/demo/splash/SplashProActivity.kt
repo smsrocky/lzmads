@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import cn.lzm.ads.mintegral.provider.MintegralProvider
 import com.ifmvo.togetherad.core.custom.splashSkip.SplashSkipViewSimple2
 import com.ifmvo.togetherad.core.helper.AdHelperSplashPro
 import com.ifmvo.togetherad.core.listener.SplashListener
@@ -17,11 +18,12 @@ import com.ifmvo.togetherad.demo.R
 import com.ifmvo.togetherad.demo.app.AdProviderType
 import com.ifmvo.togetherad.demo.app.TogetherAdAlias
 import com.ifmvo.togetherad.gdt.provider.GdtProvider
+import com.mbridge.msdk.out.MBSplashHandler
 import kotlinx.android.synthetic.main.activity_splash_pro.*
 
 /**
  * 开屏广告使用示例
- *
+ * 请求和展示分开
  * Created by Matthew Chen on 2020-04-17.
  */
 class SplashProActivity : AppCompatActivity() {
@@ -33,15 +35,17 @@ class SplashProActivity : AppCompatActivity() {
          * 使用 Map<String, Int> 配置广告商 权重，通俗的讲就是 随机请求的概率占比
          */
         val ratioMapSplash = linkedMapOf(
-                AdProviderType.GDT.type to 1,
-                AdProviderType.CSJ.type to 1
+                AdProviderType.GDT.type to 0,
+                AdProviderType.CSJ.type to 0,
+            AdProviderType.KS.type to 0,
+            AdProviderType.Mintegral.type to 1
         )
         /**
          * activity: 必传。这里不是 Context，因为广点通必须传 Activity，所以统一传 Activity。
          * alias: 必传。广告位的别名。初始化的时候是根据别名设置的广告ID，所以这里TogetherAd会根据别名查找对应的广告位ID。
          * ratioMap: 非必传。广告商的权重。可以不传或传null，空的情况 TogetherAd 会自动使用初始化时 TogetherAd.setPublicProviderRatio 设置的全局通用权重。
          */
-        AdHelperSplashPro(activity = this, alias = TogetherAdAlias.AD_SPLASH/*, ratioMap = ratioMapSplash*/)
+        AdHelperSplashPro(activity = this, alias = TogetherAdAlias.AD_SPLASH, ratioMap = ratioMapSplash)
     }
 
     companion object {
@@ -170,6 +174,30 @@ class SplashProActivity : AppCompatActivity() {
             //在这里跳转到 Home 主界面
             finish()
         }, delayMillis)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (MintegralProvider.Splash.mbSplashHandler != null) {
+            addLog("Mintegral onPause")
+            MintegralProvider.Splash.mbSplashHandler?.onPause()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (MintegralProvider.Splash.mbSplashHandler != null) {
+            addLog("Mintegral onResume")
+            MintegralProvider.Splash.mbSplashHandler?.onResume()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (MintegralProvider.Splash.mbSplashHandler != null) {
+            addLog("Mintegral onDestroy")
+            MintegralProvider.Splash.mbSplashHandler?.onDestroy()
+        }
     }
 
     private var logStr = "日志: \n"

@@ -1,6 +1,7 @@
 package com.ifmvo.togetherad.demo.app
 
 import cn.lzm.ads.ks.TogetherAdKs
+import cn.lzm.ads.mintegral.TogetherAdMintegral
 import com.ifmvo.togetherad.baidu.TogetherAdBaidu
 import com.ifmvo.togetherad.core.TogetherAd
 import com.ifmvo.togetherad.csj.TogetherAdCsj
@@ -82,6 +83,18 @@ class App : ActLifecycleAppBase() {
             context = this,
             adProviderType = AdProviderType.KS.type,
             ksAdAppId = "90009"
+        )
+
+        TogetherAdMintegral.init(
+            context = this,
+            adProviderType = AdProviderType.Mintegral.type,
+            mintegralAdAppId = "118690",
+            mintegralAdAppKey = "7c22942b749fe6a6e361b675e96b3ee9"
+        )
+
+        TogetherAdMintegral.idMapMintegral = mutableMapOf(
+            TogetherAdAlias.AD_SPLASH to "173349_209547",
+            TogetherAdAlias.AD_SPLASH_HOT to "173349_209547"
         )
 
         /**
@@ -172,7 +185,8 @@ class App : ActLifecycleAppBase() {
                 AdProviderType.GDT.type to 0,
                 AdProviderType.CSJ.type to 0,
                 AdProviderType.BAIDU.type to 0,
-                AdProviderType.KS.type to 1
+                AdProviderType.KS.type to 0,
+                AdProviderType.Mintegral.type to 1
             )
         )
 
