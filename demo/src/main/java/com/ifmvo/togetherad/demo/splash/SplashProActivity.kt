@@ -18,7 +18,6 @@ import com.ifmvo.togetherad.demo.R
 import com.ifmvo.togetherad.demo.app.AdProviderType
 import com.ifmvo.togetherad.demo.app.TogetherAdAlias
 import com.ifmvo.togetherad.gdt.provider.GdtProvider
-import com.mbridge.msdk.out.MBSplashHandler
 import kotlinx.android.synthetic.main.activity_splash_pro.*
 
 /**
