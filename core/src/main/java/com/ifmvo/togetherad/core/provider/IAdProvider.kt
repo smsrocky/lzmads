@@ -14,6 +14,12 @@ interface IAdProvider {
     /**
      * -----------------------------------开屏广告-----------------------------------
      */
+    fun pauseSplash(){}
+
+    fun resumeSplash(){}
+
+    fun destroySplash(){}
+
     fun loadAndShowSplashAd(
             @NotNull activity: Activity,//由于百度必须使用 Activity，所以这里统一传
             @NotNull adProviderType: String,

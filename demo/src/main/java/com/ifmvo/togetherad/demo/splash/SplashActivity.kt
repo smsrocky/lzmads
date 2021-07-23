@@ -33,6 +33,8 @@ class SplashActivity : AppCompatActivity() {
     //是否可以跳转，逻辑 copy from gdt demo
     private var canJump = false
 
+    private var mSplash:Any? = null
+
     companion object {
         fun action(context: Context) {
             context.startActivity(Intent(context, SplashActivity::class.java))
@@ -151,31 +153,22 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (MintegralProvider.Splash.mbSplashHandler != null) {
-            addLog("Mintegral onResume")
-            MintegralProvider.Splash.mbSplashHandler?.onResume()
-        }
         if (canJump) {
             actionHome()
         }
         canJump = true
+        AdHelperSplash.resumeSplash()
     }
 
     override fun onPause() {
         super.onPause()
         canJump = false
-        if (MintegralProvider.Splash.mbSplashHandler != null) {
-            addLog("Mintegral onPause")
-            MintegralProvider.Splash.mbSplashHandler?.onPause()
-        }
+        AdHelperSplash.pauseSplash()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        if (MintegralProvider.Splash.mbSplashHandler != null) {
-            addLog("Mintegral onDestroy")
-            MintegralProvider.Splash.mbSplashHandler?.onDestroy()
-        }
+        AdHelperSplash.destroySplash()
     }
 
     private fun actionHome(delayMillis: Long = 0) {

@@ -18,9 +18,9 @@ import java.lang.ref.WeakReference
  * Created by Matthew Chen on 2020-04-03.
  */
 class AdHelperSplashPro(
-        @NotNull activity: Activity,
-        @NotNull alias: String,
-        ratioMap: LinkedHashMap<String, Int>? = null
+    @NotNull activity: Activity,
+    @NotNull alias: String,
+    ratioMap: LinkedHashMap<String, Int>? = null
 
 ) : BaseHelper() {
 
@@ -31,19 +31,23 @@ class AdHelperSplashPro(
 
     //为了照顾 Java 调用的同学
     constructor(
-            @NotNull activity: Activity,
-            @NotNull alias: String
+        @NotNull activity: Activity,
+        @NotNull alias: String
     ) : this(activity, alias, null)
 
     //为了照顾 Java 调用的同学
     fun loadOnly(listener: SplashListener? = null) {
-        val currentRatioMap = if (mRatioMap?.isEmpty() != false) TogetherAd.getPublicProviderRatio() else mRatioMap!!
+        val currentRatioMap =
+            if (mRatioMap?.isEmpty() != false) TogetherAd.getPublicProviderRatio() else mRatioMap!!
 
         startTimer(listener)
         realLoadOnly(currentRatioMap, listener)
     }
 
-    private fun realLoadOnly(@NotNull ratioMap: LinkedHashMap<String, Int>, listener: SplashListener? = null) {
+    private fun realLoadOnly(
+        @NotNull ratioMap: LinkedHashMap<String, Int>,
+        listener: SplashListener? = null
+    ) {
         val adProviderType = DispatchUtil.getAdProvider(mAlias, ratioMap)
 
         if (adProviderType?.isEmpty() != false || mActivity.get() == null) {
@@ -60,40 +64,57 @@ class AdHelperSplashPro(
             return
         }
 
-        adProvider?.loadOnlySplashAd(activity = mActivity.get()!!, adProviderType = adProviderType, alias = mAlias, listener = object : SplashListener {
-            override fun onAdFailed(providerType: String, failedMsg: String?) {
-                if (isFetchOverTime) return
+        adProvider?.loadOnlySplashAd(
+            activity = mActivity.get()!!,
+            adProviderType = adProviderType,
+            alias = mAlias,
+            listener = object : SplashListener {
+                override fun onAdFailed(providerType: String, failedMsg: String?) {
+                    if (isFetchOverTime) return
 
-                realLoadOnly(filterType(ratioMap, adProviderType), listener)
-                listener?.onAdFailed(providerType, failedMsg)
-            }
+                    realLoadOnly(filterType(ratioMap, adProviderType), listener)
+                    listener?.onAdFailed(providerType, failedMsg)
+                }
 
-            override fun onAdStartRequest(providerType: String) {
-                listener?.onAdStartRequest(providerType)
-            }
+                override fun onAdStartRequest(providerType: String) {
+                    listener?.onAdStartRequest(providerType)
+                }
 
-            override fun onAdLoaded(providerType: String) {
-                if (isFetchOverTime) return
+                override fun onAdLoaded(providerType: String) {
+                    if (isFetchOverTime) return
 
-                cancelTimer()
-                listener?.onAdLoaded(providerType)
-            }
+                    cancelTimer()
+                    listener?.onAdLoaded(providerType)
+                }
 
-            override fun onAdClicked(providerType: String) {
-                listener?.onAdClicked(providerType)
-            }
+                override fun onAdClicked(providerType: String) {
+                    listener?.onAdClicked(providerType)
+                }
 
-            override fun onAdExposure(providerType: String) {
-                listener?.onAdExposure(providerType)
-            }
+                override fun onAdExposure(providerType: String) {
+                    listener?.onAdExposure(providerType)
+                }
 
-            override fun onAdDismissed(providerType: String) {
-                listener?.onAdDismissed(providerType)
-            }
-        })
+                override fun onAdDismissed(providerType: String) {
+                    listener?.onAdDismissed(providerType)
+                }
+            })
     }
 
     fun showAd(@NotNull container: ViewGroup): Boolean {
         return adProvider?.showSplashAd(container) ?: false
     }
+
+    fun resumeSplash() {
+        adProvider?.resumeSplash()
+    }
+
+    fun pauseSplash() {
+        adProvider?.pauseSplash()
+    }
+
+    fun destroySplash() {
+        adProvider?.destroySplash()
+    }
+
 }

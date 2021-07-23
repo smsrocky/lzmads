@@ -8,7 +8,6 @@ import com.mbridge.msdk.out.MBSplashHandler
 
 open class MintegralProvider : MintegralProviderSplash() {
     object Splash {
-        var mbSplashHandler: MBSplashHandler? = null
         //超时时间
         var maxFetchDelay:Long = 4
         var countDownS = 5

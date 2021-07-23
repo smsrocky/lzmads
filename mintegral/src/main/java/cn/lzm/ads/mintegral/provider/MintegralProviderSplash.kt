@@ -19,7 +19,19 @@ abstract class MintegralProviderSplash : MintegralProviderReward() {
     private var mAlias:String? = null
 
     private var mContainer: ViewGroup? = null
-//    private var mbSplashHandler:MBSplashHandler? = null
+    private var mbSplashHandler:MBSplashHandler? = null
+
+    override fun pauseSplash() {
+        mbSplashHandler?.onPause()
+    }
+
+    override fun resumeSplash() {
+        mbSplashHandler?.onResume()
+    }
+
+    override fun destroySplash() {
+        mbSplashHandler?.onDestroy()
+    }
 
     override fun loadOnlySplashAd(
         activity: Activity,
@@ -33,26 +45,26 @@ abstract class MintegralProviderSplash : MintegralProviderReward() {
 
         callbackSplashStartRequest(adProviderType, alias, listener)
         var templateAndUnit = TogetherAdMintegral.idMapMintegral[alias]!!.split("_")
-        MintegralProvider.Splash.mbSplashHandler = MBSplashHandler(
+        mbSplashHandler = MBSplashHandler(
             activity,
             templateAndUnit[0],
             templateAndUnit[1],
             true,
             MintegralProvider.Splash.countDownS
         )
-        MintegralProvider.Splash.mbSplashHandler?.setLoadTimeOut(MintegralProvider.Splash.maxFetchDelay)
-        MintegralProvider.Splash.mbSplashHandler?.setSplashLoadListener(object : MBSplashLoadListener {
+        mbSplashHandler?.setLoadTimeOut(MintegralProvider.Splash.maxFetchDelay)
+        mbSplashHandler?.setSplashLoadListener(object : MBSplashLoadListener {
             override fun onLoadSuccessed(mbRidgeIds: MBridgeIds?, code: Int) {
                 callbackSplashLoaded(adProviderType, alias, listener)
             }
 
             override fun onLoadFailed(mbRidgeIds: MBridgeIds?, message: String?, code: Int) {
-                MintegralProvider.Splash.mbSplashHandler = null
+                mbSplashHandler = null
                 callbackSplashFailed(adProviderType, alias, listener, code, message)
             }
 
         })
-        MintegralProvider.Splash.mbSplashHandler?.setSplashShowListener(object : MBSplashShowListener {
+        mbSplashHandler?.setSplashShowListener(object : MBSplashShowListener {
             override fun onShowSuccessed(mbRidgeIds: MBridgeIds?) {
                 callbackSplashExposure(adProviderType, listener)
             }
@@ -73,15 +85,15 @@ abstract class MintegralProviderSplash : MintegralProviderReward() {
             }
 
         })
-        MintegralProvider.Splash.mbSplashHandler?.preLoad()
+        mbSplashHandler?.preLoad()
     }
 
     override fun showSplashAd(container: ViewGroup): Boolean {
-        if (MintegralProvider.Splash.mbSplashHandler == null) return false
+        if (mbSplashHandler == null) return false
         mContainer = container
         container.removeAllViews()
-        if (MintegralProvider.Splash.mbSplashHandler!!.isReady) {
-            MintegralProvider.Splash.mbSplashHandler!!.show(container)
+        if (mbSplashHandler!!.isReady) {
+            mbSplashHandler!!.show(container)
             return true
         }
         return false
@@ -99,26 +111,26 @@ abstract class MintegralProviderSplash : MintegralProviderReward() {
 
         callbackSplashStartRequest(adProviderType, alias, listener)
         var templateAndUnit = TogetherAdMintegral.idMapMintegral[alias]!!.split("_")
-        MintegralProvider.Splash.mbSplashHandler = MBSplashHandler(
+        mbSplashHandler = MBSplashHandler(
             activity,
             templateAndUnit[0],
             templateAndUnit[1],
             true,
             MintegralProvider.Splash.countDownS
         )
-        MintegralProvider.Splash.mbSplashHandler?.setLoadTimeOut(MintegralProvider.Splash.maxFetchDelay)
-        MintegralProvider.Splash.mbSplashHandler?.setSplashLoadListener(object : MBSplashLoadListener {
+        mbSplashHandler?.setLoadTimeOut(MintegralProvider.Splash.maxFetchDelay)
+        mbSplashHandler?.setSplashLoadListener(object : MBSplashLoadListener {
             override fun onLoadSuccessed(mbRidgeIds: MBridgeIds?, code: Int) {
                 callbackSplashLoaded(adProviderType, alias, listener)
             }
 
             override fun onLoadFailed(mbRidgeIds: MBridgeIds?, message: String?, code: Int) {
-                MintegralProvider.Splash.mbSplashHandler = null
+                mbSplashHandler = null
                 callbackSplashFailed(adProviderType, alias, listener, code, message)
             }
 
         })
-        MintegralProvider.Splash.mbSplashHandler?.setSplashShowListener(object : MBSplashShowListener {
+        mbSplashHandler?.setSplashShowListener(object : MBSplashShowListener {
             override fun onShowSuccessed(mbRidgeIds: MBridgeIds?) {
                 callbackSplashExposure(adProviderType, listener)
             }
@@ -139,7 +151,7 @@ abstract class MintegralProviderSplash : MintegralProviderReward() {
             }
 
         })
-        MintegralProvider.Splash.mbSplashHandler?.loadAndShow(container)
+        mbSplashHandler?.loadAndShow(container)
     }
 
 }

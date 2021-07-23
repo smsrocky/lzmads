@@ -156,4 +156,19 @@ class SplashHotActivity : AppCompatActivity() {
 
         info.post { info.fullScroll(View.FOCUS_DOWN) }
     }
+
+    override fun onPause() {
+        super.onPause()
+        AdHelperSplash.pauseSplash()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        AdHelperSplash.resumeSplash()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        AdHelperSplash.destroySplash()
+    }
 }

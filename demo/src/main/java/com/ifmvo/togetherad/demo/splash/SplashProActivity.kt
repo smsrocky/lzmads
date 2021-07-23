@@ -177,26 +177,17 @@ class SplashProActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        if (MintegralProvider.Splash.mbSplashHandler != null) {
-            addLog("Mintegral onPause")
-            MintegralProvider.Splash.mbSplashHandler?.onPause()
-        }
+        adHelperSplashPro.pauseSplash()
     }
 
     override fun onResume() {
         super.onResume()
-        if (MintegralProvider.Splash.mbSplashHandler != null) {
-            addLog("Mintegral onResume")
-            MintegralProvider.Splash.mbSplashHandler?.onResume()
-        }
+        adHelperSplashPro.resumeSplash()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        if (MintegralProvider.Splash.mbSplashHandler != null) {
-            addLog("Mintegral onDestroy")
-            MintegralProvider.Splash.mbSplashHandler?.onDestroy()
-        }
+        adHelperSplashPro.destroySplash()
     }
 
     private var logStr = "日志: \n"
