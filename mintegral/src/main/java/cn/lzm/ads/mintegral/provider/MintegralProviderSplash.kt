@@ -18,6 +18,7 @@ abstract class MintegralProviderSplash : MintegralProviderReward() {
     private var mAdProviderType: String? = null
     private var mAlias:String? = null
 
+
     private var mContainer: ViewGroup? = null
     private var mbSplashHandler:MBSplashHandler? = null
 
