@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
     <application>
-        <!--国内流量版本必需，海外版本可以不添加。-->
+        <!--国内流量版本必需，海外版本可以不添加。
         <provider
             android:name="com.mbridge.msdk.foundation.tools.MBFileProvider"
             android:authorities="${applicationId}.mbFileProvider"
@@ -21,6 +21,6 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/mb_provider_paths"/>
-        </provider>
+        </provider>-->
     </application>
 </manifest>
