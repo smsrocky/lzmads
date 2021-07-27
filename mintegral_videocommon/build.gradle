@@ -34,7 +34,7 @@ android {
 
 dependencies {
     //    api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    /*embed(name: 'mbridge_videocommon', ext: 'aar')*/
+    embed(name: 'mbridge_videocommon', ext: 'aar')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
