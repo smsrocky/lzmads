@@ -69,7 +69,7 @@ dependencies {
     implementation project(':baidu')
     implementation project(':ks')
     implementation project(":mintegral")
-    implementation project(":mintegral_chinasame")
+    implementation project(':mintegral_mbjscommon')
     implementation project(":mintegral_splash")
     implementation project(":mintegral_videocommon")
 }
