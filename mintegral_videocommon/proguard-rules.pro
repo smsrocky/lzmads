@@ -27,4 +27,4 @@
 -dontwarn com.mbridge.**
 -keep class **.R$* { public static final int mbridge*; }
 
--keep class cn.lzm.ads.mintegral.** { *; }
+-keep class cn.lzm.ads.mintegral_videocommon.** { *; }

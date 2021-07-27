@@ -33,14 +33,8 @@ android {
 }
 
 dependencies {
-//    api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    embed(name: 'mbridge_mbjscommon', ext: 'aar')
+    //    api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    /*embed(name: 'mbridge_chinasame', ext: 'aar')*/
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-
-    api project(':core')
-    api project(':mintegral_splash')
-    api project(':mintegral_videocommon')
-    api project(':mintegral_chinasame')
 }
