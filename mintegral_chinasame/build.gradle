@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    //    api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+//        api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     embed(name: 'mbridge_chinasame', ext: 'aar')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

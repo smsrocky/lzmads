@@ -11,16 +11,4 @@
     <!-- MTG将通过此权限在Android R系统上判定广告对应的应用是否在用户的app上安装，避免投放错误的广告，以此提高用户的广告体验。 -->
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
-    <application>
-        <!--国内流量版本必需，海外版本可以不添加。
-        <provider
-            android:name="com.mbridge.msdk.foundation.tools.MBFileProvider"
-            android:authorities="${applicationId}.mbFileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/mb_provider_paths"/>
-        </provider>-->
-    </application>
 </manifest>

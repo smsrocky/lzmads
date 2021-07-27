@@ -52,8 +52,8 @@ object TogetherAdCsj {
     var data: String? = null
 
     // 可选参数，需在初始化之前，是否异步初始化
-    @Deprecated(message = "穿山甲改变了异步初始化的方式, 使用 initCallback 替换", replaceWith = ReplaceWith(expression = "initCallback", imports = ["com.ifmvo.togetherad.csj"]), level = DeprecationLevel.WARNING)
-    var isAsyncInit: Boolean = false
+    /*@Deprecated(message = "穿山甲改变了异步初始化的方式, 使用 initCallback 替换", replaceWith = ReplaceWith(expression = "initCallback", imports = ["com.ifmvo.togetherad.csj"]), level = DeprecationLevel.WARNING)
+    var isAsyncInit: Boolean = false*/
 
     // 可选参数，需在初始化之前，可以设置隐私信息控制开关
     var customController: TTCustomController? = null
@@ -61,8 +61,10 @@ object TogetherAdCsj {
     // 可选参数，异步初始化回调
     var initCallback: TTAdSdk.InitCallback? = null
 
+/*
     // 判断穿山甲SDK是否初始化成功
     var isInitSuccess = TTAdSdk.isInitSuccess()
+*/
 
     //全局使用的 TTAdManager
     var mTTAdManager = TTAdSdk.getAdManager()
@@ -109,7 +111,7 @@ object TogetherAdCsj {
         ttAdConfig.directDownloadNetworkType(directDownloadNetworkType) //允许直接下载的网络状态集合
         ttAdConfig.supportMultiProcess(supportMultiProcess) //是否支持多进程，true支持
         ttAdConfig.paid(isPaid)
-        ttAdConfig.asyncInit(isAsyncInit)
+//        ttAdConfig.asyncInit(isAsyncInit)
         keywords?.let { ttAdConfig.keywords(it) }
         data?.let { ttAdConfig.data(it) }
         httpStack?.let { ttAdConfig.httpStack(it) } //自定义网络库，demo中给出了okhttp3版本的样例，其余请自行开发或者咨询工作人员。
