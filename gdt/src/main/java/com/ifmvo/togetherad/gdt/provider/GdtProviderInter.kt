@@ -9,8 +9,8 @@ import com.qq.e.ads.interstitial2.UnifiedInterstitialADListener
 import com.qq.e.comm.util.AdError
 
 /**
+ * 广点通插屏广告
  *
- * Created by Matthew Chen on 2020/11/25.
  */
 abstract class GdtProviderInter : GdtProviderFullVideo() {
 

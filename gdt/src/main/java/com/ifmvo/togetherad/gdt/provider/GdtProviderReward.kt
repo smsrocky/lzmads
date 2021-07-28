@@ -12,7 +12,8 @@ import com.qq.e.comm.util.VideoAdValidity
 
 /**
  *
- * Created by Matthew Chen on 2020/11/25.
+ * 广点通激励视频
+ *
  */
 abstract class GdtProviderReward : GdtProviderNativeExpress2() {
 

@@ -12,8 +12,8 @@ import com.qq.e.comm.util.AdError
 
 /**
  * 全屏视频广告
+ * 广点通全屏插屏广告
  *
- * Created by Matthew Chen on 2020/12/2.
  */
 abstract class GdtProviderFullVideo : GdtProviderBanner() {
 
