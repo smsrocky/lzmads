@@ -233,6 +233,68 @@ abstract class BaseAdProvider : IAdProvider {
     }
 
     /**
+     * --------------------------- 新插屏视频广告 ---------------------------
+     */
+    protected fun callbackNewInterStartRequest(@NotNull adProviderType: String, @NotNull alias: String, @NotNull listener: NewInterListener) {
+        Handler(Looper.getMainLooper()).post {
+            "${adProviderType}: 开始请求".logi()
+            listener.onAdStartRequest(adProviderType)
+            TogetherAd.allAdListener?.onAdStartRequest(adProviderType, alias)
+        }
+    }
+
+    protected fun callbackNewInterLoaded(@NotNull adProviderType: String, @NotNull alias: String, @NotNull listener: NewInterListener) {
+        Handler(Looper.getMainLooper()).post {
+            "${adProviderType}: 请求成功了".logi()
+            listener.onAdLoaded(adProviderType)
+            TogetherAd.allAdListener?.onAdLoaded(adProviderType, alias)
+        }
+    }
+
+    protected fun callbackNewInterFailed(@NotNull adProviderType: String, @NotNull alias: String, @NotNull listener: NewInterListener, errorCode: Int?, errorMsg: String?) {
+        Handler(Looper.getMainLooper()).post {
+            "${adProviderType}: 请求失败了：$errorCode $errorMsg".loge()
+            listener.onAdFailed(adProviderType, errorMsg)
+            TogetherAd.allAdListener?.onAdFailed(adProviderType, alias, errorMsg)
+        }
+    }
+
+    protected fun callbackNewInterClicked(@NotNull adProviderType: String, @NotNull listener: NewInterListener) {
+        Handler(Looper.getMainLooper()).post {
+            "${adProviderType}: 点击了".logi()
+            listener.onAdClicked(adProviderType)
+        }
+    }
+
+    protected fun callbackNewInterShow(@NotNull adProviderType: String, @NotNull listener: NewInterListener) {
+        Handler(Looper.getMainLooper()).post {
+            "${adProviderType}: 展示了".logi()
+            listener.onAdShow(adProviderType)
+        }
+    }
+
+    protected fun callbackNewInterCached(@NotNull adProviderType: String, @NotNull listener: NewInterListener) {
+        Handler(Looper.getMainLooper()).post {
+            "${adProviderType}: 视频已缓存".logi()
+            listener.onAdVideoCached(adProviderType)
+        }
+    }
+
+    protected fun callbackNewInterClosed(@NotNull adProviderType: String, @NotNull listener: NewInterListener) {
+        Handler(Looper.getMainLooper()).post {
+            "${adProviderType}: 关闭了".logi()
+            listener.onAdClose(adProviderType)
+        }
+    }
+
+    protected fun callbackNewInterComplete(@NotNull adProviderType: String, @NotNull listener: NewInterListener) {
+        Handler(Looper.getMainLooper()).post {
+            "${adProviderType}: 视频播放完成了".logi()
+            listener.onAdVideoComplete(adProviderType)
+        }
+    }
+
+    /**
      * --------------------------- 全屏视频广告 ---------------------------
      */
     protected fun callbackFullVideoStartRequest(@NotNull adProviderType: String, @NotNull alias: String, @NotNull listener: FullVideoListener) {

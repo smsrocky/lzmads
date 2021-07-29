@@ -176,4 +176,18 @@ open class CsjProvider : CsjProviderSplash() {
         var ritScenes: TTAdConstant.RitScenes? = null
 
     }
+
+    object NewInterVideo {
+
+        //是否模板类型广告请求
+        var isExpress = true
+
+        var supportDeepLink: Boolean = true
+
+        //设置期望视频播放的方向，为TTAdConstant.HORIZONTAL或TTAdConstant.VERTICAL
+        var orientation: Int = TTAdConstant.VERTICAL
+
+        var ritScenes: TTAdConstant.RitScenes? = null
+
+    }
 }

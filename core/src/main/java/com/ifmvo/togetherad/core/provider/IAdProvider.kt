@@ -158,4 +158,23 @@ interface IAdProvider {
     fun showFullVideoAd(
             @NotNull activity: Activity
     ): Boolean
+
+
+    /**
+     * -----------------------------------请求新插屏视频广告 -----------------------------------
+     * 目前仅限于广点通与穿山甲
+     *
+     */
+    fun requestNewInterAd(
+        @NotNull activity: Activity,
+        @NotNull adProviderType: String,
+        @NotNull alias: String,
+        @NotNull listener: NewInterListener
+    ){}
+
+    fun showNewInterAd(
+        @NotNull activity: Activity
+    ): Boolean {
+        return true
+    }
 }

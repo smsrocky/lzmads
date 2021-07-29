@@ -2,6 +2,7 @@ package com.ifmvo.togetherad.gdt.provider
 
 import android.app.Activity
 import com.ifmvo.togetherad.core.listener.FullVideoListener
+import com.ifmvo.togetherad.core.listener.NewInterListener
 import com.ifmvo.togetherad.gdt.TogetherAdGdt
 import com.qq.e.ads.cfg.VideoOption
 import com.qq.e.ads.interstitial2.UnifiedInterstitialAD
@@ -15,46 +16,46 @@ import com.qq.e.comm.util.AdError
  * 广点通全屏插屏广告
  *
  */
-abstract class GdtProviderFullVideo : GdtProviderNewInter() {
+abstract class GdtProviderNewInter : GdtProviderBanner() {
 
-    private var fullVideoAd: UnifiedInterstitialAD? = null
+    private var NewInterAd: UnifiedInterstitialAD? = null
 
-    override fun requestFullVideoAd(activity: Activity, adProviderType: String, alias: String, listener: FullVideoListener) {
+    override fun requestNewInterAd(activity: Activity, adProviderType: String, alias: String, listener: NewInterListener) {
 
-        callbackFullVideoStartRequest(adProviderType, alias, listener)
+        callbackNewInterStartRequest(adProviderType, alias, listener)
 
-        fullVideoAd = UnifiedInterstitialAD(activity,TogetherAdGdt.idMapGDT[alias],object :UnifiedInterstitialADListener{
+        NewInterAd = UnifiedInterstitialAD(activity,TogetherAdGdt.idMapGDT[alias],object :UnifiedInterstitialADListener{
             override fun onADReceive() {
                 TogetherAdGdt.downloadConfirmListener?.let {
-                    fullVideoAd?.setDownloadConfirmListener(it)
+                    NewInterAd?.setDownloadConfirmListener(it)
                 }
-                callbackFullVideoLoaded(adProviderType, alias, listener)
+                callbackNewInterLoaded(adProviderType, alias, listener)
             }
 
             override fun onVideoCached() {
-                callbackFullVideoCached(adProviderType, listener)
+                callbackNewInterCached(adProviderType, listener)
             }
 
             override fun onNoAD(adError: AdError?) {
-                callbackFullVideoFailed(adProviderType, alias, listener, adError?.errorCode, adError?.errorMsg)
+                callbackNewInterFailed(adProviderType, alias, listener, adError?.errorCode, adError?.errorMsg)
             }
 
             override fun onADOpened() {
             }
 
             override fun onADExposure() {
-                callbackFullVideoShow(adProviderType, listener)
+                callbackNewInterShow(adProviderType, listener)
             }
 
             override fun onADClicked() {
-                callbackFullVideoClicked(adProviderType, listener)
+                callbackNewInterClicked(adProviderType, listener)
             }
 
             override fun onADLeftApplication() {
             }
 
             override fun onADClosed() {
-                callbackFullVideoClosed(adProviderType, listener)
+                callbackNewInterClosed(adProviderType, listener)
             }
 
             override fun onRenderSuccess() {
@@ -66,14 +67,14 @@ abstract class GdtProviderFullVideo : GdtProviderNewInter() {
         })
 
         val option = VideoOption.Builder()
-                .setAutoPlayMuted(GdtProvider.FullVideo.autoPlayMuted)
-                .setAutoPlayPolicy(GdtProvider.FullVideo.autoPlayPolicy)
+                .setAutoPlayMuted(GdtProvider.NewInter.autoPlayMuted)
+                .setAutoPlayPolicy(GdtProvider.NewInter.autoPlayPolicy)
                 .build()
-        fullVideoAd?.setVideoOption(option)
-        fullVideoAd?.setVideoPlayPolicy(GdtProvider.FullVideo.videoPlayPolicy)
-        fullVideoAd?.setMaxVideoDuration(GdtProvider.FullVideo.maxVideoDuration)
-        fullVideoAd?.setMaxVideoDuration(GdtProvider.FullVideo.minVideoDuration)
-        fullVideoAd?.setMediaListener(object :UnifiedInterstitialMediaListener {
+        NewInterAd?.setVideoOption(option)
+        NewInterAd?.setVideoPlayPolicy(GdtProvider.NewInter.videoPlayPolicy)
+        NewInterAd?.setMaxVideoDuration(GdtProvider.NewInter.maxVideoDuration)
+        NewInterAd?.setMaxVideoDuration(GdtProvider.NewInter.minVideoDuration)
+        NewInterAd?.setMediaListener(object :UnifiedInterstitialMediaListener {
             override fun onVideoPageOpen() {}
             override fun onVideoLoading() {}
             override fun onVideoReady(p0: Long) {}
@@ -82,18 +83,18 @@ abstract class GdtProviderFullVideo : GdtProviderNewInter() {
             override fun onVideoPageClose() {}
             override fun onVideoStart() {}
             override fun onVideoComplete() {
-                callbackFullVideoComplete(adProviderType, listener)
+                callbackNewInterComplete(adProviderType, listener)
             }
             override fun onVideoError(adError: AdError?) {}
         })
-        fullVideoAd?.loadFullScreenAD()
+        NewInterAd?.loadFullScreenAD()
     }
 
-    override fun showFullVideoAd(activity: Activity): Boolean {
-        if (fullVideoAd?.isValid != true) {
+    override fun showNewInterAd(activity: Activity): Boolean {
+        if (NewInterAd?.isValid != true) {
             return false
         }
-        fullVideoAd?.showFullScreenAD(activity)
+        NewInterAd?.showFullScreenAD(activity)
         return true
     }
 }
