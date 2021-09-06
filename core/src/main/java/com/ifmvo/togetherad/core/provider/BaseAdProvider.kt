@@ -55,8 +55,8 @@ abstract class BaseAdProvider : IAdProvider {
     protected fun callbackSplashFailed(@NotNull adProviderType: String, @NotNull alias: String, @NotNull listener: SplashListener, errorCode: Int?, errorMsg: String?) {
         Handler(Looper.getMainLooper()).post {
             "${adProviderType}: 请求失败了：$errorCode $errorMsg".loge()
-            listener.onAdFailed(adProviderType, errorMsg)
-            TogetherAd.allAdListener?.onAdFailed(adProviderType, alias, errorMsg)
+            listener.onAdFailed(adProviderType, "$errorCode $errorMsg")
+            TogetherAd.allAdListener?.onAdFailed(adProviderType, alias, "$errorCode $errorMsg")
         }
     }
 
@@ -89,8 +89,8 @@ abstract class BaseAdProvider : IAdProvider {
     protected fun callbackNativeFailed(@NotNull adProviderType: String, @NotNull alias: String, @NotNull listener: NativeListener, errorCode: Int?, errorMsg: String?) {
         Handler(Looper.getMainLooper()).post {
             "${adProviderType}: 请求失败了：$errorCode $errorMsg".loge()
-            listener.onAdFailed(adProviderType, errorMsg)
-            TogetherAd.allAdListener?.onAdFailed(adProviderType, alias, errorMsg)
+            listener.onAdFailed(adProviderType, "$errorCode $errorMsg")
+            TogetherAd.allAdListener?.onAdFailed(adProviderType, alias, "$errorCode $errorMsg")
         }
     }
 
@@ -116,8 +116,8 @@ abstract class BaseAdProvider : IAdProvider {
     protected fun callbackNativeExpressFailed(@NotNull adProviderType: String, @NotNull alias: String, @NotNull listener: NativeExpress2Listener, errorCode: Int?, errorMsg: String?) {
         Handler(Looper.getMainLooper()).post {
             "${adProviderType}: 请求失败了：$errorCode $errorMsg".loge()
-            listener.onAdFailed(adProviderType, errorMsg)
-            TogetherAd.allAdListener?.onAdFailed(adProviderType, alias, errorMsg)
+            listener.onAdFailed(adProviderType, "$errorCode $errorMsg")
+            TogetherAd.allAdListener?.onAdFailed(adProviderType, alias, "$errorCode $errorMsg")
         }
     }
 
@@ -178,8 +178,8 @@ abstract class BaseAdProvider : IAdProvider {
     protected fun callbackRewardFailed(@NotNull adProviderType: String, @NotNull alias: String, @NotNull listener: RewardListener, errorCode: Int?, errorMsg: String?) {
         Handler(Looper.getMainLooper()).post {
             "${adProviderType}: 请求失败了：$errorCode $errorMsg".loge()
-            listener.onAdFailed(adProviderType, errorMsg)
-            TogetherAd.allAdListener?.onAdFailed(adProviderType, alias, errorMsg)
+            listener.onAdFailed(adProviderType, "$errorCode $errorMsg")
+            TogetherAd.allAdListener?.onAdFailed(adProviderType, alias, "$errorCode $errorMsg")
         }
     }
 
@@ -254,8 +254,8 @@ abstract class BaseAdProvider : IAdProvider {
     protected fun callbackNewInterFailed(@NotNull adProviderType: String, @NotNull alias: String, @NotNull listener: NewInterListener, errorCode: Int?, errorMsg: String?) {
         Handler(Looper.getMainLooper()).post {
             "${adProviderType}: 请求失败了：$errorCode $errorMsg".loge()
-            listener.onAdFailed(adProviderType, errorMsg)
-            TogetherAd.allAdListener?.onAdFailed(adProviderType, alias, errorMsg)
+            listener.onAdFailed(adProviderType, "$errorCode $errorMsg")
+            TogetherAd.allAdListener?.onAdFailed(adProviderType, alias, "$errorCode $errorMsg")
         }
     }
 
@@ -316,8 +316,8 @@ abstract class BaseAdProvider : IAdProvider {
     protected fun callbackFullVideoFailed(@NotNull adProviderType: String, @NotNull alias: String, @NotNull listener: FullVideoListener, errorCode: Int?, errorMsg: String?) {
         Handler(Looper.getMainLooper()).post {
             "${adProviderType}: 请求失败了：$errorCode $errorMsg".loge()
-            listener.onAdFailed(adProviderType, errorMsg)
-            TogetherAd.allAdListener?.onAdFailed(adProviderType, alias, errorMsg)
+            listener.onAdFailed(adProviderType, "$errorCode $errorMsg")
+            TogetherAd.allAdListener?.onAdFailed(adProviderType, alias, "$errorCode $errorMsg")
         }
     }
 
@@ -378,8 +378,8 @@ abstract class BaseAdProvider : IAdProvider {
     protected fun callbackBannerFailed(@NotNull adProviderType: String, @NotNull alias: String, @NotNull listener: BannerListener, errorCode: Int?, errorMsg: String?) {
         Handler(Looper.getMainLooper()).post {
             "${adProviderType}: 请求失败了：$errorCode $errorMsg".loge()
-            listener.onAdFailed(adProviderType, errorMsg)
-            TogetherAd.allAdListener?.onAdFailed(adProviderType, alias, errorMsg)
+            listener.onAdFailed(adProviderType, "$errorCode $errorMsg")
+            TogetherAd.allAdListener?.onAdFailed(adProviderType, alias, "$errorCode $errorMsg")
         }
     }
 
@@ -426,8 +426,8 @@ abstract class BaseAdProvider : IAdProvider {
     protected fun callbackInterFailed(@NotNull adProviderType: String, @NotNull alias: String, @NotNull listener: InterListener, errorCode: Int?, errorMsg: String?) {
         Handler(Looper.getMainLooper()).post {
             "${adProviderType}: 请求失败了：$errorCode $errorMsg".loge()
-            listener.onAdFailed(adProviderType, errorMsg)
-            TogetherAd.allAdListener?.onAdFailed(adProviderType, alias, errorMsg)
+            listener.onAdFailed(adProviderType, "$errorCode $errorMsg")
+            TogetherAd.allAdListener?.onAdFailed(adProviderType, alias, "$errorCode $errorMsg")
         }
     }
 
