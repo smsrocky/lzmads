@@ -1,7 +1,7 @@
 # TogetherAd
 广告版本更新
 TogetherAd 是由 Kotlin 编写的 Android 广告聚合开源项目。
-
+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
 能够帮助 Android 开发者``快速``、``便捷``、``灵活``的 ``接入并使用`` 国内多家主流广告 SDK。
 
 TogetherAd 也是一种将各个广告提供商``组件化处理``的解决方案。
