@@ -45,6 +45,13 @@ abstract class CsjProviderReward : CsjProviderNativeExpress2() {
                 callbackRewardVideoCached(adProviderType, listener)
             }
 
+            /**
+             * 新sdk提供
+             */
+            override fun onRewardVideoCached(p0: TTRewardVideoAd?) {
+
+            }
+
             //视频广告素材加载到，如title,视频url等，不包括视频文件
             override fun onRewardVideoAdLoad(ad: TTRewardVideoAd) {
 

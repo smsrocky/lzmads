@@ -84,6 +84,10 @@ object AdHelperSplash : BaseHelper() {
         })
     }
 
+    fun isBaiduSplash() {
+        adProvider?.isBaiduSplash()
+    }
+
     fun resumeSplash() {
         adProvider?.resumeSplash()
     }

@@ -107,4 +107,9 @@ class AdHelperFullVideo(
     fun show() {
         mActivity.get()?.let { adProvider?.showFullVideoAd(it) }
     }
+
+    //gromore 全屏视频广告需要调用生命周期方法
+    fun destroyFullVideoAd() {
+        adProvider?.destroyFullVideoAd()
+    }
 }

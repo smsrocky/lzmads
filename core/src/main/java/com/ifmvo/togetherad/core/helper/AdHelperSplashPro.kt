@@ -105,6 +105,10 @@ class AdHelperSplashPro(
         return adProvider?.showSplashAd(container) ?: false
     }
 
+    fun isBaiduSplash() {
+        adProvider?.isBaiduSplash()
+    }
+
     fun resumeSplash() {
         adProvider?.resumeSplash()
     }

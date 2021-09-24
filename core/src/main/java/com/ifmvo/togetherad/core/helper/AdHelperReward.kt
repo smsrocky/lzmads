@@ -17,10 +17,10 @@ import java.lang.ref.WeakReference
  */
 class AdHelperReward(
 
-        @NotNull activity: Activity,
-        @NotNull alias: String,
-        ratioMap: LinkedHashMap<String, Int>? = null,
-        listener: RewardListener? = null
+    @NotNull activity: Activity,
+    @NotNull alias: String,
+    ratioMap: LinkedHashMap<String, Int>? = null,
+    listener: RewardListener? = null
 
 ) : BaseHelper() {
 
@@ -32,13 +32,14 @@ class AdHelperReward(
 
     //为了照顾 Java 调用的同学
     constructor(
-            @NotNull activity: Activity,
-            @NotNull alias: String,
-            listener: RewardListener? = null
+        @NotNull activity: Activity,
+        @NotNull alias: String,
+        listener: RewardListener? = null
     ) : this(activity, alias, null, listener)
 
     fun load() {
-        val currentRatioMap: LinkedHashMap<String, Int> = if (mRatioMap?.isEmpty() != false) TogetherAd.getPublicProviderRatio() else mRatioMap!!
+        val currentRatioMap: LinkedHashMap<String, Int> =
+            if (mRatioMap?.isEmpty() != false) TogetherAd.getPublicProviderRatio() else mRatioMap!!
 
         startTimer(mListener)
         reload(currentRatioMap)
@@ -62,54 +63,58 @@ class AdHelperReward(
             return
         }
 
-        adProvider?.requestRewardAd(mActivity.get()!!, adProviderType, mAlias, object : RewardListener {
-            override fun onAdStartRequest(providerType: String) {
-                mListener?.onAdStartRequest(providerType)
-            }
+        adProvider?.requestRewardAd(
+            mActivity.get()!!,
+            adProviderType,
+            mAlias,
+            object : RewardListener {
+                override fun onAdStartRequest(providerType: String) {
+                    mListener?.onAdStartRequest(providerType)
+                }
 
-            override fun onAdFailed(providerType: String, failedMsg: String?) {
-                if (isFetchOverTime) return
+                override fun onAdFailed(providerType: String, failedMsg: String?) {
+                    if (isFetchOverTime) return
 
-                reload(filterType(ratioMap, adProviderType))
+                    reload(filterType(ratioMap, adProviderType))
 
-                mListener?.onAdFailed(providerType, failedMsg)
-            }
+                    mListener?.onAdFailed(providerType, failedMsg)
+                }
 
-            override fun onAdClicked(providerType: String) {
-                mListener?.onAdClicked(providerType)
-            }
+                override fun onAdClicked(providerType: String) {
+                    mListener?.onAdClicked(providerType)
+                }
 
-            override fun onAdShow(providerType: String) {
-                mListener?.onAdShow(providerType)
-            }
+                override fun onAdShow(providerType: String) {
+                    mListener?.onAdShow(providerType)
+                }
 
-            override fun onAdLoaded(providerType: String) {
-                if (isFetchOverTime) return
+                override fun onAdLoaded(providerType: String) {
+                    if (isFetchOverTime) return
 
-                cancelTimer()
-                mListener?.onAdLoaded(providerType)
-            }
+                    cancelTimer()
+                    mListener?.onAdLoaded(providerType)
+                }
 
-            override fun onAdExpose(providerType: String) {
-                mListener?.onAdExpose(providerType)
-            }
+                override fun onAdExpose(providerType: String) {
+                    mListener?.onAdExpose(providerType)
+                }
 
-            override fun onAdVideoComplete(providerType: String) {
-                mListener?.onAdVideoComplete(providerType)
-            }
+                override fun onAdVideoComplete(providerType: String) {
+                    mListener?.onAdVideoComplete(providerType)
+                }
 
-            override fun onAdVideoCached(providerType: String) {
-                mListener?.onAdVideoCached(providerType)
-            }
+                override fun onAdVideoCached(providerType: String) {
+                    mListener?.onAdVideoCached(providerType)
+                }
 
-            override fun onAdRewardVerify(providerType: String) {
-                mListener?.onAdRewardVerify(providerType)
-            }
+                override fun onAdRewardVerify(providerType: String) {
+                    mListener?.onAdRewardVerify(providerType)
+                }
 
-            override fun onAdClose(providerType: String) {
-                mListener?.onAdClose(providerType)
-            }
-        })
+                override fun onAdClose(providerType: String) {
+                    mListener?.onAdClose(providerType)
+                }
+            })
     }
 
     fun show(): Boolean {
@@ -123,5 +128,9 @@ class AdHelperReward(
         }
 
         return false
+    }
+
+    fun destroyRewardVideoAd() {
+        adProvider?.destroyRewardVideoAd()
     }
 }

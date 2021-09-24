@@ -59,6 +59,12 @@ abstract class CsjProviderFullVideo : CsjProviderNewInter() {
                 callbackFullVideoCached(adProviderType, listener)
             }
 
+            /**
+             * 新sdk提供
+             */
+            override fun onFullScreenVideoCached(p0: TTFullScreenVideoAd?) {
+            }
+
             override fun onError(errorCode: Int, errorMsg: String?) {
                 callbackFullVideoFailed(adProviderType, alias, listener, errorCode, errorMsg)
             }

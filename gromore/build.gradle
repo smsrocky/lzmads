@@ -1,0 +1,76 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.kezong.fat-aar'
+
+// JitPack Maven
+apply plugin: 'com.github.dcendents.android-maven'
+// Your Group
+group = 'com.github.ifmvo'
+
+//msdk
+def M_SDK_VERSION = "2.9.2"
+def M_SDK_VERSION_FIX = ".1"
+//pangle
+def PANGLE_SDK_VERSION = "4.0.0.1"
+//gdt
+def GDT_SDK_VERSION = "4.391.1261"
+def GDT_ADAPTER_VERSION = ".1"
+//ks
+def KS_SDK_VERSION = "3.3.13"
+def KS_ADAPTER_VERSION = ".1"
+//baidu
+def BAIDU_SDK_VERSION = "9.14"
+def BAIDU_ADAPTER_VERSION = ".2"
+//mintegral
+def MINTEGRAL_SDK_VERSION = "15.6.17"
+def MINTEGRAL_ADAPTER_VERSION = ".1"
+//admob
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "5.0.3"
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    buildTypes {
+        release {
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
+
+    repositories { flatDir { dirs 'libs' } }
+
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+
+    implementation project(':csj')
+    implementation project(':gdt')
+//    implementation project(':baidu')
+    implementation project(':ks')
+    implementation project(":mintegral")
+    //GroMore_sdk
+    implementation "com.gromore.cn:gromore-sdk:${M_SDK_VERSION}${M_SDK_VERSION_FIX}"  //groMore sdk
+//    implementation "com.gromore.cn:gromore-test-tools:${M_SDK_VERSION}${M_SDK_VERSION_FIX}"  //groMore 测试工具
+
+    //GroMore_sdk adapter
+    implementation "com.gromore.cn:gdt-adapter:${GDT_SDK_VERSION}${GDT_ADAPTER_VERSION}"
+    implementation "com.gromore.cn:ks-adapter:${KS_SDK_VERSION}${KS_ADAPTER_VERSION}"
+    implementation "com.gromore.cn:baidu-adapter:${BAIDU_SDK_VERSION}${BAIDU_ADAPTER_VERSION}"
+    implementation "com.gromore.cn:mintegral-adapter:${MINTEGRAL_SDK_VERSION}${MINTEGRAL_ADAPTER_VERSION}"
+
+
+    api project(':core')
+}

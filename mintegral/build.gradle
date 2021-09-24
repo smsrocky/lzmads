@@ -8,6 +8,8 @@ apply plugin: 'com.github.dcendents.android-maven'
 // Your Group
 group = 'com.github.ifmvo'
 
+def MINTEGRAL_SDK_VERSION = "15.6.17"
+
 android {
     compileSdkVersion 30
 
@@ -28,19 +30,33 @@ android {
         }
     }
 
-    repositories { flatDir { dirs 'libs' } }
+//    repositories { flatDir { dirs 'libs' } }
 
 }
 
 dependencies {
 //    api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    embed(name: 'mbridge_chinasame', ext: 'aar')
+//    embed(name: 'mbridge_chinasame', ext: 'aar')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:28.0.0'
 
     api project(':core')
-    api project(':mintegral_splash')
+    /*api project(':mintegral_splash')
     api project(':mintegral_videocommon')
-    api project(':mintegral_mbjscommon')
+    api project(':mintegral_mbjscommon')*/
+    //mtg
+    implementation("com.mbridge.msdk.support:videojs:${MINTEGRAL_SDK_VERSION}")
+    implementation("com.mbridge.msdk.support:mbjscommon:${MINTEGRAL_SDK_VERSION}")
+    implementation("com.mbridge.msdk.support:playercommon:${MINTEGRAL_SDK_VERSION}")
+    implementation("com.mbridge.msdk.support:reward:${MINTEGRAL_SDK_VERSION}")
+    implementation("com.mbridge.msdk.support:videocommon:${MINTEGRAL_SDK_VERSION}")
+    implementation("com.mbridge.msdk.support:chinasame:${MINTEGRAL_SDK_VERSION}")
+    implementation("com.mbridge.msdk.support:interstitialvideo:${MINTEGRAL_SDK_VERSION}")
+    implementation("com.mbridge.msdk.support:mbnative:${MINTEGRAL_SDK_VERSION}")
+    implementation("com.mbridge.msdk.support:nativeex:${MINTEGRAL_SDK_VERSION}")
+    implementation("com.mbridge.msdk.support:mbnativeadvanced:${MINTEGRAL_SDK_VERSION}")
+    implementation("com.mbridge.msdk.support:interstitial:${MINTEGRAL_SDK_VERSION}")
+    implementation("com.mbridge.msdk.support:mbbanner:${MINTEGRAL_SDK_VERSION}")
+    implementation("com.mbridge.msdk.support:mbsplash:${MINTEGRAL_SDK_VERSION}")
 }

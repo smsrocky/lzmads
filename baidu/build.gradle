@@ -32,8 +32,8 @@ android {
 }
 
 dependencies {
-//    api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    embed(name: 'Baidu_MobAds_SDK-release', ext: 'aar')
+    api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+//    embed(name: 'Baidu_MobAds_SDK_v9.14', ext: 'aar')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 

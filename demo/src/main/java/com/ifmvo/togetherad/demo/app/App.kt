@@ -2,7 +2,6 @@ package com.ifmvo.togetherad.demo.app
 
 import cn.lzm.ads.ks.TogetherAdKs
 import cn.lzm.ads.mintegral.TogetherAdMintegral
-import com.ifmvo.togetherad.baidu.TogetherAdBaidu
 import com.ifmvo.togetherad.core.TogetherAd
 import com.ifmvo.togetherad.csj.TogetherAdCsj
 import com.ifmvo.togetherad.demo.BuildConfig
@@ -57,7 +56,6 @@ class App : ActLifecycleAppBase() {
          */
 //        //可参照 DownloadConfirmHelper 自定义下载确认的回调
 //        TogetherAdGdt.downloadConfirmListener = DownloadConfirmHelper.DOWNLOAD_CONFIRM_LISTENER
-
         //初始化穿山甲
         TogetherAdCsj.init(
             context = this,
@@ -73,11 +71,11 @@ class App : ActLifecycleAppBase() {
             gdtAdAppId = "1101152570"
         )
         //初始化百青藤
-        TogetherAdBaidu.init(
+       /* TogetherAdBaidu.init(
             context = this,
             adProviderType = AdProviderType.BAIDU.type,
             baiduAdAppId = "ee93e58e"
-        )
+        )*/
 
         TogetherAdKs.init(
             context = this,
@@ -137,7 +135,7 @@ class App : ActLifecycleAppBase() {
             TogetherAdAlias.AD_HYBRID_VERTICAL_PREMOVIE to "6040749702835933"
         )
 
-        TogetherAdBaidu.idMapBaidu = mutableMapOf(
+        /*TogetherAdBaidu.idMapBaidu = mutableMapOf(
             TogetherAdAlias.AD_SPLASH to "2543740",
             TogetherAdAlias.AD_SPLASH_HOT to "2543740",
             TogetherAdAlias.AD_NATIVE_EXPRESS_2_SIMPLE to "",//不支持
@@ -153,7 +151,7 @@ class App : ActLifecycleAppBase() {
             TogetherAdAlias.AD_HYBRID_SPLASH to "2058628",//id是原生类型
             TogetherAdAlias.AD_HYBRID_EXPRESS to "",//不支持
             TogetherAdAlias.AD_HYBRID_VERTICAL_PREMOVIE to ""//不支持
-        )
+        )*/
 
         TogetherAdKs.idMapKs = mutableMapOf(
             TogetherAdAlias.AD_SPLASH to "4000000042",
@@ -182,10 +180,10 @@ class App : ActLifecycleAppBase() {
          */
         TogetherAd.setPublicProviderRatio(
             linkedMapOf(
-                AdProviderType.GDT.type to 0,
-                AdProviderType.CSJ.type to 0,
+                AdProviderType.GDT.type to 1,
+                AdProviderType.CSJ.type to 1,
                 AdProviderType.BAIDU.type to 0,
-                AdProviderType.KS.type to 0,
+                AdProviderType.KS.type to 1,
                 AdProviderType.Mintegral.type to 1
             )
         )

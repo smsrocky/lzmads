@@ -56,6 +56,13 @@ abstract class CsjProviderNewInter : CsjProviderBanner() {
                 callbackNewInterCached(adProviderType, listener)
             }
 
+            /**
+             * 新sdk提供
+             */
+            override fun onFullScreenVideoCached(p0: TTFullScreenVideoAd?) {
+
+            }
+
             override fun onError(errorCode: Int, errorMsg: String?) {
                 callbackNewInterFailed(adProviderType, alias, listener, errorCode, errorMsg)
             }

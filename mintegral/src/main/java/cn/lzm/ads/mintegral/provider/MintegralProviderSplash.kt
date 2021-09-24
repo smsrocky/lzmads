@@ -23,14 +23,17 @@ abstract class MintegralProviderSplash : MintegralProviderReward() {
     private var mbSplashHandler:MBSplashHandler? = null
 
     override fun pauseSplash() {
+        super.pauseSplash()
         mbSplashHandler?.onPause()
     }
 
     override fun resumeSplash() {
+        super.resumeSplash()
         mbSplashHandler?.onResume()
     }
 
     override fun destroySplash() {
+        super.destroySplash()
         mbSplashHandler?.onDestroy()
     }
 

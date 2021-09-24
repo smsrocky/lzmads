@@ -14,6 +14,8 @@ interface IAdProvider {
     /**
      * -----------------------------------开屏广告-----------------------------------
      */
+    fun isBaiduSplash():Boolean
+
     fun pauseSplash(){}
 
     fun resumeSplash(){}
@@ -144,6 +146,8 @@ interface IAdProvider {
     fun showRewardAd(
             @NotNull activity: Activity
     ): Boolean
+    //销毁
+    fun destroyRewardVideoAd(){}
 
     /**
      * -----------------------------------请求全屏视频广告 -----------------------------------
@@ -158,6 +162,8 @@ interface IAdProvider {
     fun showFullVideoAd(
             @NotNull activity: Activity
     ): Boolean
+
+    fun destroyFullVideoAd(){}
 
 
     /**

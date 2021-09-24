@@ -20,6 +20,13 @@ abstract class BaseAdProvider : IAdProvider {
     protected val tag: String? = this.javaClass.simpleName
 
     /**
+     * 除了growmore 均返回false
+     */
+    override fun isBaiduSplash(): Boolean {
+        return false
+    }
+
+    /**
      * --------------------------- 开屏 ---------------------------
      */
     protected fun callbackSplashStartRequest(@NotNull adProviderType: String, @NotNull alias: String, @NotNull listener: SplashListener) {

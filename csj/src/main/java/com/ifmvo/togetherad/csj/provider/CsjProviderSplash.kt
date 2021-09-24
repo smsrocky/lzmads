@@ -22,8 +22,8 @@ abstract class CsjProviderSplash : CsjProviderReward() {
 
     private var mListener: SplashListener? = null
     private var mAdProviderType: String? = null
-
     private var mSplashAd: TTSplashAd? = null
+
     override fun loadOnlySplashAd(activity: Activity, adProviderType: String, alias: String, listener: SplashListener) {
         mListener = listener
         mAdProviderType = adProviderType
