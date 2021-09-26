@@ -8,8 +8,6 @@ apply plugin: 'com.github.dcendents.android-maven'
 // Your Group
 group = 'com.github.ifmvo'
 
-def MINTEGRAL_SDK_VERSION = "15.6.17"
-
 android {
     compileSdkVersion 30
 
@@ -30,8 +28,7 @@ android {
         }
     }
 
-//    repositories { flatDir { dirs 'libs' } }
-
+    repositories { flatDir { dirs 'libs' } }
 }
 
 dependencies {
