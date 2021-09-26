@@ -63,14 +63,17 @@ dependencies {
     implementation project(":mintegral")
     //GroMore_sdk
     implementation "com.gromore.cn:gromore-sdk:${M_SDK_VERSION}${M_SDK_VERSION_FIX}"  //groMore sdk
-//    implementation "com.gromore.cn:gromore-test-tools:${M_SDK_VERSION}${M_SDK_VERSION_FIX}"  //groMore 测试工具
 
     //GroMore_sdk adapter
-    implementation "com.gromore.cn:gdt-adapter:${GDT_SDK_VERSION}${GDT_ADAPTER_VERSION}"
+    /*implementation "com.gromore.cn:gdt-adapter:${GDT_SDK_VERSION}${GDT_ADAPTER_VERSION}"
     implementation "com.gromore.cn:ks-adapter:${KS_SDK_VERSION}${KS_ADAPTER_VERSION}"
     implementation "com.gromore.cn:baidu-adapter:${BAIDU_SDK_VERSION}${BAIDU_ADAPTER_VERSION}"
-    implementation "com.gromore.cn:mintegral-adapter:${MINTEGRAL_SDK_VERSION}${MINTEGRAL_ADAPTER_VERSION}"
+    implementation "com.gromore.cn:mintegral-adapter:${MINTEGRAL_SDK_VERSION}${MINTEGRAL_ADAPTER_VERSION}"*/
 
+    embed("com.gromore.cn:gdt-adapter:${GDT_SDK_VERSION}${GDT_ADAPTER_VERSION}")
+    embed("com.gromore.cn:ks-adapter:${KS_SDK_VERSION}${KS_ADAPTER_VERSION}")
+    embed("com.gromore.cn:baidu-adapter:${BAIDU_SDK_VERSION}${BAIDU_ADAPTER_VERSION}")
+    embed("com.gromore.cn:mintegral-adapter:${MINTEGRAL_SDK_VERSION}${MINTEGRAL_ADAPTER_VERSION}")
 
     api project(':core')
 }
