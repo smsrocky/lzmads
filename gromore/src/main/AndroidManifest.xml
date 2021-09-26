@@ -35,24 +35,4 @@
     ,com.mbridge.msdk.video,com.mbridge.msdk.mbsignalcommon,com.mbridge.msdk.playercommon,com.mbridge.msdk.reward,com.mbridge.msdk.banner,com.mbridge.msdk.splash
 ,com.mbridge.msdk.videocommon,com.mbridge.msdk,com.mbridge.msdk.intervideo,com.mbridge.msdk.mbnative,com.mbridge.msdk.nativex,com.mbridge.msdk.advanced,com.mbridge.msdk.interstitial,com.tencent.klevin,com.bytedance.sdk.openadsdk.adhost" />
 
-    <application>
-        <uses-library
-            android:name="org.apache.http.legacy"
-            android:required="false" />
-
-
-
-        <!-- mintegral start================== -->
-        <provider
-            android:name="com.mbridge.msdk.foundation.tools.MBFileProvider"
-            android:authorities="${applicationId}.mbFileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/mb_provider_paths" />
-        </provider>
-        <!-- mintegral end================== -->
-    </application>
-
 </manifest>

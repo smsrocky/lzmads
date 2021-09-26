@@ -130,7 +130,7 @@ class AdHelperReward(
         return false
     }
 
-    fun destroyRewardVideoAd() {
+    /*fun destroyRewardVideoAd() {
         adProvider?.destroyRewardVideoAd()
-    }
+    }*/
 }
