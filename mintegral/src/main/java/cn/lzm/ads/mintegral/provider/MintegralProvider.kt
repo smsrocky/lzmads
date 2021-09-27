@@ -51,7 +51,7 @@ open class MintegralProvider : MintegralProviderSplash() {
     }
 
     override fun nativeAdIsBelongTheProvider(adObject: Any): Boolean {
-        return true
+        return false
     }
 
     override fun resumeNativeAd(adObject: Any) {
@@ -76,7 +76,7 @@ open class MintegralProvider : MintegralProviderSplash() {
     }
 
     override fun nativeExpressAdIsBelongTheProvider(adObject: Any): Boolean {
-        return true
+        return false
     }
 
     override fun getNativeExpress2AdList(
@@ -92,7 +92,7 @@ open class MintegralProvider : MintegralProviderSplash() {
     }
 
     override fun nativeExpress2AdIsBelongTheProvider(adObject: Any): Boolean {
-        return true
+        return false
     }
 
 }
