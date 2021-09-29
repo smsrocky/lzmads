@@ -10,7 +10,8 @@ import com.ifmvo.togetherad.csj.TogetherAdCsj
 
 /**
  *
- * Created by Matthew Chen on 2020/12/1.
+ * 穿山甲全屏视频
+ *
  */
 abstract class CsjProviderFullVideo : CsjProviderNewInter() {
 

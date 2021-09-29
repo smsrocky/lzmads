@@ -14,7 +14,8 @@ import kotlin.math.roundToInt
 
 /**
  *
- * Created by Matthew Chen on 2020/11/25.
+ * 穿山甲开屏广告
+ *
  */
 abstract class CsjProviderSplash : CsjProviderReward() {
 

@@ -7,7 +7,8 @@ import com.ifmvo.togetherad.csj.TogetherAdCsj
 
 /**
  *
- * Created by Matthew Chen on 2020/11/25.
+ * 穿山甲激励广告
+ * .
  */
 abstract class CsjProviderReward : CsjProviderNativeExpress2() {
 

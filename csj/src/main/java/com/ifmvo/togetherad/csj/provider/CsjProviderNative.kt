@@ -7,11 +7,18 @@ import com.ifmvo.togetherad.csj.TogetherAdCsj
 
 /**
  *
- * Created by Matthew Chen on 2020/11/25.
+ * 穿山甲原生广告
+ * .
  */
 abstract class CsjProviderNative : CsjProviderInter() {
 
-    override fun getNativeAdList(activity: Activity, adProviderType: String, alias: String, maxCount: Int, listener: NativeListener) {
+    override fun getNativeAdList(
+        activity: Activity,
+        adProviderType: String,
+        alias: String,
+        maxCount: Int,
+        listener: NativeListener
+    ) {
         if (CsjProvider.Native.nativeAdType == -1) {
             throw IllegalArgumentException(
                     """
@@ -30,7 +37,6 @@ abstract class CsjProviderNative : CsjProviderInter() {
     |  CsjProvider.Native.nativeAdType = AdSlot.TYPE_STREAM
     |  任选其一
     |--------------------------------------------------------------------------------------
-
 """
             )
         }

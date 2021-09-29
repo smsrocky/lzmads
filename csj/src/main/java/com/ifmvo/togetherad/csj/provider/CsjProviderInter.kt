@@ -8,7 +8,8 @@ import com.ifmvo.togetherad.csj.TogetherAdCsj
 
 /**
  *
- * Created by Matthew Chen on 2020/11/2.
+ * 穿山甲插屏广告
+ *
  */
 abstract class CsjProviderInter : CsjProviderFullVideo() {
 
