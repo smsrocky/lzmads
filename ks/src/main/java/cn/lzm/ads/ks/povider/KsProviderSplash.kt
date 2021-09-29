@@ -1,11 +1,9 @@
 package cn.lzm.ads.ks.povider
 
 import android.app.Activity
-import android.os.SystemClock
 import android.view.ViewGroup
 import cn.lzm.ads.ks.TogetherAdKs
 import com.ifmvo.togetherad.core.listener.SplashListener
-import com.ifmvo.togetherad.core.provider.BaseAdProvider
 import com.kwad.sdk.api.KsAdSDK
 import com.kwad.sdk.api.KsLoadManager
 import com.kwad.sdk.api.KsScene
@@ -88,17 +86,6 @@ abstract class KsProviderSplash : KsProviderReward() {
                         override fun onSkippedAd() {
                             callbackSplashDismiss(adProviderType, listener)
                         }
-
-                        override fun onDownloadTipsDialogShow() {
-
-                        }
-
-                        override fun onDownloadTipsDialogDismiss() {
-                        }
-
-                        override fun onDownloadTipsDialogCancel() {
-                        }
-
                     })
                     splashAd = ksSplashScreenAd
                     callbackSplashLoaded(adProviderType, alias, listener)
@@ -131,15 +118,6 @@ abstract class KsProviderSplash : KsProviderReward() {
 
                 override fun onSkippedAd() {
                     callbackSplashDismiss(mAdProviderType!!, mListener!!)
-                }
-
-                override fun onDownloadTipsDialogShow() {
-                }
-
-                override fun onDownloadTipsDialogDismiss() {
-                }
-
-                override fun onDownloadTipsDialogCancel() {
                 }
             })
         container.removeAllViews()
@@ -216,15 +194,6 @@ abstract class KsProviderSplash : KsProviderReward() {
 
                             override fun onSkippedAd() {
                                 callbackSplashDismiss(adProviderType, listener)
-                            }
-
-                            override fun onDownloadTipsDialogShow() {
-                            }
-
-                            override fun onDownloadTipsDialogDismiss() {
-                            }
-
-                            override fun onDownloadTipsDialogCancel() {
                             }
                         })
                     if (!activity.isFinishing) {
