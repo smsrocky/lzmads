@@ -7,9 +7,6 @@ import com.ifmvo.togetherad.csj.native_.view.NativeViewCsjSimple3
 import com.ifmvo.togetherad.demo.app.AdProviderType
 import com.ifmvo.togetherad.gdt.native_.view.NativeViewGdtSimple3
 
-/*
- * Created by Matthew Chen on 2020-04-21.
- */
 class NativeTemplateSimple3(onClose: ((adProviderType: String) -> Unit)? = null) : BaseNativeTemplate() {
 
     private var mOnClose = onClose

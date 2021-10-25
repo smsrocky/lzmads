@@ -9,9 +9,6 @@ import com.ifmvo.togetherad.core.listener.NativeViewListener
 import com.ifmvo.togetherad.csj.R
 import kotlin.math.roundToInt
 
-/**
- * Created by Matthew Chen on 2020-04-21.
- */
 class NativeViewCsjSimple3(onClose: ((adProviderType: String) -> Unit)? = null) : BaseNativeViewCsj() {
 
     private var mOnClose = onClose

@@ -18,31 +18,23 @@ import java.lang.ref.WeakReference
 
 /**
  * 原生信息流广告
- *
- * Created by Matthew Chen on 2020-04-20.
- */
+ **/
 class AdHelperNativePro(
-
         @NotNull activity: Activity,
         @NotNull alias: String,
         ratioMap: LinkedHashMap<String, Int>? = null,
         maxCount: Int
-
 ) : BaseHelper() {
-
     private var mActivity: WeakReference<Activity> = WeakReference(activity)
     private var mAlias: String = alias
     private var mRatioMap: LinkedHashMap<String, Int>? = ratioMap
     private var mMaxCount: Int = maxCount
     private var adProvider: BaseAdProvider? = null
-
     //所有请求到的广告容器
     private var mAdList = mutableListOf<Any>()
 
     companion object {
-
         private const val defaultMaxCount = 1
-
         fun show(@Nullable adObject: Any?, @Nullable container: ViewGroup?, @NotNull nativeTemplate: BaseNativeTemplate, @Nullable listener: NativeViewListener? = null) {
             if (adObject == null) {
                 return
@@ -71,16 +63,12 @@ class AdHelperNativePro(
         }
 
         fun pauseAd(@Nullable adObjectList: List<Any>?) {
-            if (adObjectList?.isEmpty() != false) {
-                return
-            }
+            if (adObjectList?.isEmpty() != false) { return }
             adObjectList.forEach { pauseAd(it) }
         }
 
         fun resumeAd(@Nullable adObject: Any?) {
-            if (adObject == null) {
-                return
-            }
+            if (adObject == null) { return }
             TogetherAd.mProviders.entries.forEach { entry ->
                 val adProvider = AdProviderLoader.loadAdProvider(entry.key)
                 adProvider?.resumeNativeAd(adObject)
@@ -88,16 +76,12 @@ class AdHelperNativePro(
         }
 
         fun resumeAd(@Nullable adObjectList: List<Any>?) {
-            if (adObjectList?.isEmpty() != false) {
-                return
-            }
+            if (adObjectList?.isEmpty() != false) { return }
             adObjectList.forEach { resumeAd(it) }
         }
 
         fun destroyAd(@Nullable adObject: Any?) {
-            if (adObject == null) {
-                return
-            }
+            if (adObject == null) { return }
             TogetherAd.mProviders.entries.forEach { entry ->
                 val adProvider = AdProviderLoader.loadAdProvider(entry.key)
                 adProvider?.destroyNativeAd(adObject)
@@ -105,9 +89,7 @@ class AdHelperNativePro(
         }
 
         fun destroyAd(@Nullable adObjectList: List<Any>?) {
-            if (adObjectList?.isEmpty() != false) {
-                return
-            }
+            if (adObjectList?.isEmpty() != false) { return }
             adObjectList.forEach { destroyAd(it) }
         }
     }
@@ -118,7 +100,6 @@ class AdHelperNativePro(
             @NotNull alias: String,
             maxCount: Int
     ) : this(activity, alias, null, maxCount)
-
     //为了照顾 Java 调用的同学
     constructor(
             @NotNull activity: Activity,
@@ -127,25 +108,19 @@ class AdHelperNativePro(
 
     fun getList(listener: NativeListener? = null) {
         val currentRatioMap: LinkedHashMap<String, Int> = if (mRatioMap?.isEmpty() != false) TogetherAd.getPublicProviderRatio() else mRatioMap!!
-
         startTimer(listener)
         getListForMap(currentRatioMap, listener)
     }
 
     private fun getListForMap(@NotNull ratioMap: LinkedHashMap<String, Int>, listener: NativeListener? = null) {
-
         val currentMaxCount = if (mMaxCount <= 0) defaultMaxCount else mMaxCount
-
         val adProviderType = DispatchUtil.getAdProvider(mAlias, ratioMap)
-
         if (adProviderType?.isEmpty() != false || mActivity.get() == null) {
             cancelTimer()
             listener?.onAdFailedAll(FailedAllMsg.failedAll_noDispatch)
             return
         }
-
         adProvider = AdProviderLoader.loadAdProvider(adProviderType)
-
         if (adProvider == null) {
             "$adProviderType ${mActivity.get()?.getString(R.string.no_init)}".loge()
             getListForMap(filterType(ratioMap, adProviderType), listener)
@@ -159,7 +134,6 @@ class AdHelperNativePro(
 
             override fun onAdLoaded(providerType: String, adList: List<Any>) {
                 if (isFetchOverTime) return
-
                 cancelTimer()
                 mAdList.addAll(adList)
                 listener?.onAdLoaded(providerType, adList)
@@ -167,9 +141,7 @@ class AdHelperNativePro(
 
             override fun onAdFailed(providerType: String, failedMsg: String?) {
                 if (isFetchOverTime) return
-
                 getListForMap(filterType(ratioMap, adProviderType), listener)
-
                 listener?.onAdFailed(providerType, failedMsg)
             }
         })

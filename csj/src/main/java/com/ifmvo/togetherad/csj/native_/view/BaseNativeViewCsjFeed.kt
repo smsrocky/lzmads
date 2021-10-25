@@ -14,12 +14,7 @@ import com.ifmvo.togetherad.core.custom.native_.BaseNativeView
 import com.ifmvo.togetherad.core.listener.NativeViewListener
 import com.ifmvo.togetherad.csj.R
 
-/**
- *
- * Created by Matthew Chen on 2020/9/27.
- */
 abstract class BaseNativeViewCsjFeed(onClose: ((adProviderType: String) -> Unit)? = null) : BaseNativeView() {
-
     var rootView: View? = null
 
     //关闭按钮的回调

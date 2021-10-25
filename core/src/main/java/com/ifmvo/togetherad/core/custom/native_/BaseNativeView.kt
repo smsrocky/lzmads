@@ -5,11 +5,10 @@ import com.ifmvo.togetherad.core.listener.NativeViewListener
 import org.jetbrains.annotations.NotNull
 import org.jetbrains.annotations.Nullable
 
-/*
- * Created by Matthew Chen on 2020-04-21.
+/**
+ * 原生信息流展示
+ *
  */
 abstract class BaseNativeView {
-
     abstract fun showNative(@NotNull adProviderType: String, @NotNull adObject: Any, @NotNull container: ViewGroup, @Nullable listener: NativeViewListener? = null)
-
 }

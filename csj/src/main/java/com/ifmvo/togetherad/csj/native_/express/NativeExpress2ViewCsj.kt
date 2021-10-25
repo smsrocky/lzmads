@@ -10,9 +10,6 @@ import com.bytedance.sdk.openadsdk.TTNativeExpressAd
 import com.ifmvo.togetherad.core.custom.express2.BaseNativeExpress2View
 import com.ifmvo.togetherad.core.listener.NativeExpress2ViewListener
 
-/**
- * Created by Matthew Chen on 2020/11/25.
- */
 class NativeExpress2ViewCsj : BaseNativeExpress2View() {
 
     override fun showNativeExpress2(activity: Activity, adProviderType: String, adObject: Any, container: ViewGroup, listener: NativeExpress2ViewListener?) {

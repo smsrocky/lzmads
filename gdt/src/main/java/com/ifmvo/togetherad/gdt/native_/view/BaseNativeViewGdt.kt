@@ -17,13 +17,7 @@ import com.qq.e.ads.nativ.widget.NativeAdContainer
 import com.qq.e.comm.constants.AdPatternType
 import com.qq.e.comm.util.AdError
 
-
-/**
- *
- * Created by Matthew Chen on 2020/9/16.
- */
 abstract class BaseNativeViewGdt(onClose: ((adProviderType: String) -> Unit)? = null) : BaseNativeView() {
-
     //设置视频广告在预览页自动播放时是否静音，默认为true，静音自动播放；
     // 模板渲染视频、插屏2.0视频、自渲染2.0视频都可使用
     var autoPlayMuted = true
@@ -140,12 +134,9 @@ abstract class BaseNativeViewGdt(onClose: ((adProviderType: String) -> Unit)? = 
         if (adObject !is NativeUnifiedADData) {
             return
         }
-
         container.removeAllViews()
-
         //findView
         rootView = View.inflate(container.context, getLayoutRes(), container)
-
         //设置下载确认
         TogetherAdGdt.downloadConfirmListener?.let {
             adObject.setDownloadConfirmListener(it)
@@ -175,7 +166,6 @@ abstract class BaseNativeViewGdt(onClose: ((adProviderType: String) -> Unit)? = 
 
         //视频需要设置 静音、播放、暂停、停止按钮
         if (adObject.adPatternType == AdPatternType.NATIVE_VIDEO) {
-
             val videoOption = VideoOption.Builder()
                     .setAutoPlayPolicy(autoPlayPolicy)
                     .setAutoPlayMuted(autoPlayMuted)

@@ -7,9 +7,6 @@ import com.ifmvo.togetherad.core.listener.NativeViewListener
 import com.ifmvo.togetherad.core.utils.ScreenUtil
 import com.ifmvo.togetherad.csj.R
 
-/**
- * Created by Matthew Chen on 2020-04-21.
- */
 class NativeViewCsjSimple1 : BaseNativeViewCsj() {
 
     override fun getLayoutRes(): Int {

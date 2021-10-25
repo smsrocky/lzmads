@@ -9,51 +9,37 @@ import com.bytedance.sdk.openadsdk.TTNativeAd
 import com.ifmvo.togetherad.core.TogetherAd
 import com.ifmvo.togetherad.core.listener.NativeViewListener
 
-/**
- *
- * Created by Matthew Chen on 2020/9/27.
- */
 abstract class BaseNativeViewCsj(onClose: ((adProviderType: String) -> Unit)? = null) : BaseNativeViewCsjFeed(onClose) {
-
     //关闭按钮的回调
     private var mOnClose = onClose
 
     override fun showNative(adProviderType: String, adObject: Any, container: ViewGroup, listener: NativeViewListener?) {
-
         if (adObject is TTFeedAd) {
             super.showNative(adProviderType, adObject, container, listener)
             return
         }
-
         if (adObject !is TTNativeAd) {
             return
         }
-
         container.removeAllViews()
-
         //findView
         rootView = View.inflate(container.context, getLayoutRes(), container)
-
         //AdLogo
         getAdLogoImageView()?.setImageBitmap(adObject.adLogo)
-
         //Icon
         getIconImageView()?.let {
             TogetherAd.mImageLoader?.loadImage(container.context, it, adObject.icon.imageUrl)
         }
-
         //CloseBtn
         getCloseButton()?.visibility = if (mOnClose == null) View.GONE else View.VISIBLE
         getCloseButton()?.setOnClickListener {
             mOnClose?.invoke(adProviderType)
         }
-
         //标题和描述
         getTitleTextView()?.text = adObject.title
         getDescTextView()?.text = adObject.description
         getSourceTextView()?.text = if (adObject.source?.isNotEmpty() == true) adObject.source else "广告来源"
         getActionButton()?.text = getActionBtnText(adObject)
-
         adObject.setDownloadListener(object : TTAppDownloadListener {
             override fun onIdle() {
                 getActionButton()?.text = "开始下载"
@@ -157,5 +143,4 @@ abstract class BaseNativeViewCsj(onClose: ((adProviderType: String) -> Unit)? = 
             }
         }
     }
-
 }

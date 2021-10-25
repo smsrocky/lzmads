@@ -14,16 +14,13 @@ import java.util.concurrent.Executors
 /* 
  *  默认的图片加载处理
  * 
- * Created by Matthew Chen on 2020-05-15.
  */
 class DefaultImageLoader : AdImageLoader {
-
     object Async {
         internal val cache: Executor = Executors.newCachedThreadPool()
         private val HANDLER = Handler(Looper.getMainLooper())
         internal val main: Executor = Executor { command -> HANDLER.post(command) }
     }
-
     override fun loadImage(context: Context, imageView: ImageView, imgUrl: String) {
         try {
             Async.cache.execute {

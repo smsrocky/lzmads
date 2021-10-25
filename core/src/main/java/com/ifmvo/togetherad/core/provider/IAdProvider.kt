@@ -98,6 +98,9 @@ interface IAdProvider {
     //控制原生自渲染的生命周期
     fun destroyNativeAd(@NotNull adObject: Any)
 
+    //gromre列表注销配置回调
+    fun unregisterSdk() {}
+
     /**
      * -----------------------------------获取原生模板列表-----------------------------------
      */
