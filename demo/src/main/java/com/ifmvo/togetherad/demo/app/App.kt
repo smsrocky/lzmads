@@ -1,7 +1,8 @@
 package com.ifmvo.togetherad.demo.app
 
 import cn.lzm.ads.ks.TogetherAdKs
-import cn.lzm.ads.mintegral.TogetherAdMintegral
+import com.bytedance.sdk.openadsdk.TTAdSdk
+//import cn.lzm.ads.mintegral.TogetherAdMintegral
 import com.ifmvo.togetherad.core.TogetherAd
 import com.ifmvo.togetherad.csj.TogetherAdCsj
 import com.ifmvo.togetherad.demo.BuildConfig
@@ -57,6 +58,16 @@ class App : ActLifecycleAppBase() {
 //        //可参照 DownloadConfirmHelper 自定义下载确认的回调
 //        TogetherAdGdt.downloadConfirmListener = DownloadConfirmHelper.DOWNLOAD_CONFIRM_LISTENER
         //初始化穿山甲
+
+        TogetherAdCsj.initCallback = object:TTAdSdk.InitCallback{
+            override fun success() {
+            }
+
+            override fun fail(p0: Int, p1: String?) {
+            }
+
+        }
+
         TogetherAdCsj.init(
             context = this,
             adProviderType = AdProviderType.CSJ.type,
@@ -83,17 +94,17 @@ class App : ActLifecycleAppBase() {
             ksAdAppId = "90009"
         )
 
-        TogetherAdMintegral.init(
+        /*TogetherAdMintegral.init(
             context = this,
             adProviderType = AdProviderType.Mintegral.type,
             mintegralAdAppId = "118690",
             mintegralAdAppKey = "7c22942b749fe6a6e361b675e96b3ee9"
-        )
+        )*/
 
-        TogetherAdMintegral.idMapMintegral = mutableMapOf(
+        /*TogetherAdMintegral.idMapMintegral = mutableMapOf(
             TogetherAdAlias.AD_SPLASH to "173349_209547",
             TogetherAdAlias.AD_SPLASH_HOT to "173349_209547"
-        )
+        )*/
 
         /**
          * 配置所有广告位ID
@@ -180,10 +191,10 @@ class App : ActLifecycleAppBase() {
          */
         TogetherAd.setPublicProviderRatio(
             linkedMapOf(
-                AdProviderType.GDT.type to 0,
-                AdProviderType.CSJ.type to 0,
+                AdProviderType.GDT.type to 1,
+                AdProviderType.CSJ.type to 1,
                 AdProviderType.BAIDU.type to 0,
-                AdProviderType.KS.type to 1,
+                AdProviderType.KS.type to 0,
                 AdProviderType.Mintegral.type to 0
             )
         )

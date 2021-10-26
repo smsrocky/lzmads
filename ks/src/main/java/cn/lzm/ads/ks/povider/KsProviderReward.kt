@@ -48,6 +48,8 @@ abstract class KsProviderReward : KsProviderFullVideo() {
                                 callbackRewardVideoComplete(adProviderType, listener)
                             }
 
+                            override fun onVideoSkipToEnd(p0: Long) {
+                            }
 
                             override fun onVideoPlayStart() {
                                 callbackRewardShow(adProviderType, listener)
@@ -56,6 +58,9 @@ abstract class KsProviderReward : KsProviderFullVideo() {
 
                             override fun onRewardVerify() {
                                 callbackRewardVerify(adProviderType, listener)
+                            }
+
+                            override fun onRewardStepVerify(p0: Int, p1: Int) {
                             }
 
                         })

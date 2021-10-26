@@ -86,6 +86,15 @@ abstract class KsProviderSplash : KsProviderReward() {
                         override fun onSkippedAd() {
                             callbackSplashDismiss(adProviderType, listener)
                         }
+
+                        override fun onDownloadTipsDialogShow() {
+                        }
+
+                        override fun onDownloadTipsDialogDismiss() {
+                        }
+
+                        override fun onDownloadTipsDialogCancel() {
+                        }
                     })
                     splashAd = ksSplashScreenAd
                     callbackSplashLoaded(adProviderType, alias, listener)
@@ -118,6 +127,16 @@ abstract class KsProviderSplash : KsProviderReward() {
 
                 override fun onSkippedAd() {
                     callbackSplashDismiss(mAdProviderType!!, mListener!!)
+                }
+
+                override fun onDownloadTipsDialogShow() {
+
+                }
+
+                override fun onDownloadTipsDialogDismiss() {
+                }
+
+                override fun onDownloadTipsDialogCancel() {
                 }
             })
         container.removeAllViews()
@@ -194,6 +213,15 @@ abstract class KsProviderSplash : KsProviderReward() {
 
                             override fun onSkippedAd() {
                                 callbackSplashDismiss(adProviderType, listener)
+                            }
+
+                            override fun onDownloadTipsDialogShow() {
+                            }
+
+                            override fun onDownloadTipsDialogDismiss() {
+                            }
+
+                            override fun onDownloadTipsDialogCancel() {
                             }
                         })
                     if (!activity.isFinishing) {
