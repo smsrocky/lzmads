@@ -29,6 +29,7 @@ android {
     }
 
     repositories { flatDir { dirs 'libs' } }
+    ndkVersion '21.1.6352462'
 
 }
 

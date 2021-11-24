@@ -29,12 +29,13 @@ android {
     }
 
     repositories { flatDir { dirs 'libs' } }
+    ndkVersion '21.1.6352462'
 
 }
 
 dependencies {
 //    api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    embed(name: 'open_ad_sdk_4.0.1.7', ext: 'aar')
+    embed(name: 'open_ad_sdk_4.0.1.9', ext: 'aar')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api project(':core')
 }
