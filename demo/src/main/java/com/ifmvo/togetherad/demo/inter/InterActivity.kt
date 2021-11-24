@@ -85,7 +85,6 @@ class InterActivity : AppCompatActivity() {
             //开始展示插屏广告，必须在 onAdLoaded 回调之后展示
             adHelperInter?.show()
         }
-
     }
 
     override fun onDestroy() {

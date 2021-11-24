@@ -12,17 +12,14 @@ import com.ifmvo.togetherad.core.utils.loge
 import java.lang.ref.WeakReference
 
 /**
- * 激励广告
+ * 插屏广告
  *
- * Created by Matthew Chen on 2020-04-20.
  */
 class AdHelperInter(
-
         @NotNull activity: Activity,
         @NotNull alias: String,
         ratioMap: LinkedHashMap<String, Int>? = null,
         listener: InterListener? = null
-
 ) : BaseHelper() {
 
     private var mActivity: WeakReference<Activity> = WeakReference(activity)
@@ -40,29 +37,23 @@ class AdHelperInter(
 
     fun load() {
         val currentRatioMap: LinkedHashMap<String, Int> = if (mRatioMap?.isEmpty() != false) TogetherAd.getPublicProviderRatio() else mRatioMap!!
-
         startTimer(mListener)
         reload(currentRatioMap)
     }
 
     private fun reload(@NotNull ratioMap: LinkedHashMap<String, Int>) {
-
         val adProviderType = DispatchUtil.getAdProvider(mAlias, ratioMap)
-
         if (adProviderType?.isEmpty() != false || mActivity.get() == null) {
             cancelTimer()
             mListener?.onAdFailedAll(FailedAllMsg.failedAll_noDispatch)
             return
         }
-
         adProvider = AdProviderLoader.loadAdProvider(adProviderType)
-
         if (adProvider == null) {
             "$adProviderType ${mActivity.get()?.getString(R.string.no_init)}".loge()
             reload(filterType(ratioMap, adProviderType))
             return
         }
-
         adProvider?.requestInterAd(mActivity.get()!!, adProviderType, mAlias, object : InterListener {
             override fun onAdStartRequest(providerType: String) {
                 mListener?.onAdStartRequest(providerType)
@@ -70,16 +61,13 @@ class AdHelperInter(
 
             override fun onAdLoaded(providerType: String) {
                 if (isFetchOverTime) return
-
                 cancelTimer()
                 mListener?.onAdLoaded(providerType)
             }
 
             override fun onAdFailed(providerType: String, failedMsg: String?) {
                 if (isFetchOverTime) return
-
                 reload(filterType(ratioMap, adProviderType))
-
                 mListener?.onAdFailed(providerType, failedMsg)
             }
 

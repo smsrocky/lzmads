@@ -11,7 +11,6 @@ import com.ifmvo.togetherad.csj.TogetherAdCsj
  * .
  */
 abstract class CsjProviderNative : CsjProviderInter() {
-
     override fun getNativeAdList(
         activity: Activity,
         adProviderType: String,

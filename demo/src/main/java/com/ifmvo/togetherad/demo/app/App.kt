@@ -1,10 +1,16 @@
 package com.ifmvo.togetherad.demo.app
 
+import android.util.Log
 import cn.lzm.ads.ks.TogetherAdKs
+import com.bytedance.sdk.openadsdk.TTAdConstant
 import com.bytedance.sdk.openadsdk.TTAdSdk
 //import cn.lzm.ads.mintegral.TogetherAdMintegral
 import com.ifmvo.togetherad.core.TogetherAd
 import com.ifmvo.togetherad.csj.TogetherAdCsj
+import com.ifmvo.togetherad.csj.TogetherAdCsj.debug
+import com.ifmvo.togetherad.csj.TogetherAdCsj.directDownloadNetworkType
+import com.ifmvo.togetherad.csj.TogetherAdCsj.supportMultiProcess
+import com.ifmvo.togetherad.csj.TogetherAdCsj.useTextureView
 import com.ifmvo.togetherad.demo.BuildConfig
 import com.ifmvo.togetherad.demo.R
 import com.ifmvo.togetherad.gdt.TogetherAdGdt
@@ -58,16 +64,28 @@ class App : ActLifecycleAppBase() {
 //        //可参照 DownloadConfirmHelper 自定义下载确认的回调
 //        TogetherAdGdt.downloadConfirmListener = DownloadConfirmHelper.DOWNLOAD_CONFIRM_LISTENER
         //初始化穿山甲
-
+        val startT = System.currentTimeMillis()
         TogetherAdCsj.initCallback = object:TTAdSdk.InitCallback{
             override fun success() {
+                Log.e(
+                    "TogetherAd",
+                    "Sucess穿山甲初始时间" + ((System.currentTimeMillis() - startT) / 1000)
+                )
             }
 
-            override fun fail(p0: Int, p1: String?) {
+            override fun fail(i: Int, s: String?) {
+                Log.e(
+                    "TogetherAd",
+                    "Fail穿山甲初始时间" + ((System.currentTimeMillis() - startT) / 1000)
+                )
             }
 
         }
-
+        //初始化穿山甲
+        useTextureView = true
+        debug = BuildConfig.DEBUG
+        directDownloadNetworkType = TTAdConstant.NETWORK_STATE_WIFI
+        supportMultiProcess = true
         TogetherAdCsj.init(
             context = this,
             adProviderType = AdProviderType.CSJ.type,
@@ -175,7 +193,7 @@ class App : ActLifecycleAppBase() {
 //            TogetherAdAlias.AD_NATIVE_RECYCLERVIEW to "2058628",
 //            TogetherAdAlias.AD_BANNER to "2015351",
 //            TogetherAdAlias.AD_INTER to "2403633",
-//            TogetherAdAlias.AD_REWARD to "5925490",
+            TogetherAdAlias.AD_REWARD to "5925490",
             TogetherAdAlias.AD_FULL_VIDEO to "90009002"
 //            TogetherAdAlias.AD_HYBRID_SPLASH to "2058628",//id是原生类型
 //            TogetherAdAlias.AD_HYBRID_EXPRESS to "",//不支持
@@ -191,10 +209,10 @@ class App : ActLifecycleAppBase() {
          */
         TogetherAd.setPublicProviderRatio(
             linkedMapOf(
-                AdProviderType.GDT.type to 1,
-                AdProviderType.CSJ.type to 1,
+                AdProviderType.GDT.type to 0,
+                AdProviderType.CSJ.type to 0,
                 AdProviderType.BAIDU.type to 0,
-                AdProviderType.KS.type to 0,
+                AdProviderType.KS.type to 1,
                 AdProviderType.Mintegral.type to 0
             )
         )
