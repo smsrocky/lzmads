@@ -56,7 +56,7 @@ abstract class GdtProviderNative : GdtProviderInter() {
         if (adObject !is NativeUnifiedADData) return
         adObject.resume()
         if (adObject.adPatternType == AdPatternType.NATIVE_VIDEO) {
-            adObject.resumeVideo()
+//            adObject.resumeVideo()
             adObject.startVideo()
         }
     }
