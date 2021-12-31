@@ -57,6 +57,7 @@ abstract class GdtProviderNative : GdtProviderInter() {
         adObject.resume()
         if (adObject.adPatternType == AdPatternType.NATIVE_VIDEO) {
             adObject.resumeVideo()
+            adObject.startVideo()
         }
     }
 
